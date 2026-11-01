@@ -1,0 +1,52 @@
+{
+  "product": "Ordarc experience shell",
+  "scope": "presentation-only",
+  "license": "MIT",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "514355674818eb391c0ac17e5298e78e4cc0902db7cfb0b39beb7a5fff9e2f57",
+      "bytes": 652
+    },
+    {
+      "path": "README.md",
+      "sha256": "ef9f35831248aa0f7a6a79f3ddaf973c8a6cc7c99598b39e50f154e1f386a72b",
+      "bytes": 728
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "f096b4346cead6aad6f696d8d7bec2da56a63f9c86edad918c7ba17365120272",
+      "bytes": 1076
+    },
+    {
+      "path": "index.html",
+      "sha256": "c7fb64c0b3e308df21966505f5968eb41ee3a9648d79fa23075fe1f52412b504",
+      "bytes": 307
+    },
+    {
+      "path": "demo.tsx",
+      "sha256": "b39ab4c1a6b9ac6c5157ce00bb0667001f5c86e36979ca429a9357808a460355",
+      "bytes": 1673
+    },
+    {
+      "path": "demo.css",
+      "sha256": "5ade8d35da00d21de053002b63d5e14ac8dad4fb494eafb8a757ee202107c478",
+      "bytes": 1842
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "2359cf48a104d1c7510f53b0ff61e941a3240e4d2ef3950699a3d85fa87f3a91",
+      "bytes": 815
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "f6eec5768875188dc055663a44a60f0a4a141b6022f4d36708e7cbc62010e277",
+      "bytes": 245
+    },
+    {
+      "path": "src/index.tsx",
+      "sha256": "4d0f5ec78c96f6773434b1640a20191cb004808aacfcc6d0f45efefeb522e6fa",
+      "bytes": 751
+    }
+  ]
+}
