@@ -5,7 +5,8 @@
   "type": "module",
   "license": "MIT",
   "exports": {
-    ".": "./src/index.tsx"
+    ".": "./src/index.tsx",
+    "./styles.css": "./src/styles.css"
   },
   "files": [
     "src",
@@ -19,9 +20,11 @@
   ],
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 18872 --strictPort",
-    "build": "npm run typecheck && vite build",
+    "build": "npm run typecheck && vite build && node scripts/provenance.mjs build",
     "typecheck": "tsc --noEmit",
-    "test:consumer": "node scripts/verify-consumer.mjs"
+    "test:consumer": "node scripts/verify-consumer.mjs",
+    "source:write": "node scripts/provenance.mjs source-write",
+    "source:verify": "node scripts/provenance.mjs source-verify"
   },
   "peerDependencies": {
     "react": "^18.3.1"

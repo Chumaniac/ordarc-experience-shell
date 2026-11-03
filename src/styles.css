@@ -1,0 +1,13 @@
+/* Optional presentation styles; page-wide colors, resets and typography belong to the host. */
+.site-header,.site-footer{background:var(--ordarc-surface,#101215);color:var(--ordarc-foreground,#e9e6e2)}
+.site-header a,.site-footer a,.service-card a{color:inherit}
+.site-header{border-bottom:1px solid #303237}
+.header-inner{max-width:1120px;margin:auto;padding:24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.site-header nav,.site-footer nav{display:flex;gap:24px;font-size:14px;color:#bdbbb8}
+.service-card{padding:28px;border:1px solid #36383c;border-radius:12px;background:var(--ordarc-card,#181b20);color:var(--ordarc-foreground,#e9e6e2)}
+.service-card h2,.service-card h3,.service-card h4{font-size:19px;font-weight:500;margin:0 0 16px}
+.service-card p{font-size:14px;line-height:1.9;color:#bdbbb8}
+.site-footer{max-width:1120px;margin:auto;padding:28px 24px;border-top:1px solid #303237;display:flex;justify-content:space-between;gap:24px}
+.site-footer small{display:block;color:#bdbbb8;margin-top:8px;font-size:12px}
+.site-header a:focus-visible,.site-footer a:focus-visible,.service-card a:focus-visible,.service-card button:focus-visible{outline:2px solid var(--ordarc-focus,#d0bd9b);outline-offset:5px}
+@media(max-width:720px){.header-inner{padding:18px 20px}.site-footer{flex-direction:column}.service-card{padding:24px}}

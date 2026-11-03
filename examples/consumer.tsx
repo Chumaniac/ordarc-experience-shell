@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { ProductHeader, ProductFooter, ServiceCard } from '@ordarc/experience-shell';
+import '@ordarc/experience-shell/styles.css';
 
 createRoot(document.getElementById('root')!).render(<>
   <ProductHeader><a href="#content">Example product</a><nav aria-label="Product navigation"><a href="#services">Services</a></nav></ProductHeader>

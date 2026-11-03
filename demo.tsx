@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { ProductHeader, ProductFooter, ServiceCard } from './src/index';
+import './src/styles.css';
 import './demo.css';
 
 createRoot(document.getElementById('root')!).render(<>

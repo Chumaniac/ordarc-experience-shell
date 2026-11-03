@@ -28,3 +28,24 @@ uses an `h1` → `h2` → `h3` hierarchy and localized footer navigation. Run
 last command installs the actual tarball into a fresh directory and checks its
 consumer types and production build. These checks do not certify every host UI
 or replace assistive-technology review.
+
+## Styles and reproducible source
+
+The component entry is headless: it imports no stylesheet. For the optional
+component styles, explicitly import `@ordarc/experience-shell/styles.css`.
+The optional styles supply dark component surfaces with readable foregrounds;
+customize `--ordarc-surface`, `--ordarc-card`, `--ordarc-foreground` and
+`--ordarc-focus`. Those rules target the component classes; host-wide resets, colors and typography
+belong to the host. `demo.css` is demo-only and should not be a host stylesheet.
+The package exports TSX source and requires a TSX-capable consumer bundler; `dist`
+is the static demo, not a compiled component library. No npm publication is
+performed by these checks.
+
+After committing source changes, run `npm run source:write`, review and commit
+`SHOWCASE-MANIFEST.json`. `npm run source:verify` checks its maintained input
+allowlist, file sizes/digests, source-tree digest and ancestor commit. The manifest
+excludes itself and review reports; the old nine-file manifest remains in Git
+history. A clean build records `dist/BUILD-PROVENANCE.json` with actual input and
+output digests, lockfile, Node/npm/Vite/TypeScript versions and license metadata.
+Draft builds explicitly report working-tree changes. The receipt excludes itself
+and does not prove a hosted release, source authorship or business acceptance.
