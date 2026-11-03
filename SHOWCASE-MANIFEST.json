@@ -1,52 +1,97 @@
 {
+  "version": 1,
   "product": "Ordarc experience shell",
   "scope": "presentation-only",
   "license": "MIT",
+  "sourceCommit": "253966bf19707588407d18eb3b6d44585128bc2c",
+  "includesWorkingTreeChanges": false,
+  "manifestSelfExcluded": true,
+  "sourceTreeSha256": "3da37338d503f70e2f2db2fdd0d3bdfe38c02f1d0d32f50b7ae5c33cb9a63cd8",
   "files": [
     {
-      "path": "package.json",
-      "sha256": "514355674818eb391c0ac17e5298e78e4cc0902db7cfb0b39beb7a5fff9e2f57",
-      "bytes": 652
+      "path": ".github/workflows/check.yml",
+      "bytes": 589,
+      "sha256": "cc8bcd880b92e059c24a1e4e544e2cf42966a34f5ecf05b0b9316bca6fe4d810"
     },
     {
-      "path": "README.md",
-      "sha256": "ef9f35831248aa0f7a6a79f3ddaf973c8a6cc7c99598b39e50f154e1f386a72b",
-      "bytes": 728
+      "path": ".gitignore",
+      "bytes": 27,
+      "sha256": "2e0051aa2ec871608f4ac5f32d59edbe6ca42a9e6613ef12025ef1f419f2c42d"
     },
     {
       "path": "LICENSE",
-      "sha256": "f096b4346cead6aad6f696d8d7bec2da56a63f9c86edad918c7ba17365120272",
-      "bytes": 1076
+      "bytes": 1076,
+      "sha256": "f096b4346cead6aad6f696d8d7bec2da56a63f9c86edad918c7ba17365120272"
     },
     {
-      "path": "index.html",
-      "sha256": "c7fb64c0b3e308df21966505f5968eb41ee3a9648d79fa23075fe1f52412b504",
-      "bytes": 307
-    },
-    {
-      "path": "demo.tsx",
-      "sha256": "b39ab4c1a6b9ac6c5157ce00bb0667001f5c86e36979ca429a9357808a460355",
-      "bytes": 1673
+      "path": "README.md",
+      "bytes": 3441,
+      "sha256": "3c030536a34de5eb4ac46cf0e3bf7539d8c7ef47a1895a2dfa674ce9c13dd7e2"
     },
     {
       "path": "demo.css",
-      "sha256": "5ade8d35da00d21de053002b63d5e14ac8dad4fb494eafb8a757ee202107c478",
-      "bytes": 1842
+      "bytes": 1180,
+      "sha256": "204db37d1c3aa8e5b99c08b1284d4895d9c151ba94b2f2e1a80c818c242579c1"
     },
     {
-      "path": "vite.config.ts",
-      "sha256": "2359cf48a104d1c7510f53b0ff61e941a3240e4d2ef3950699a3d85fa87f3a91",
-      "bytes": 815
+      "path": "demo.tsx",
+      "bytes": 1700,
+      "sha256": "d9c69bb8736a2fcf82423c0c4cd1ba5838ea4842d552184c6d7a1d34f91825ab"
     },
     {
-      "path": "tsconfig.json",
-      "sha256": "f6eec5768875188dc055663a44a60f0a4a141b6022f4d36708e7cbc62010e277",
-      "bytes": 245
+      "path": "examples/consumer.html",
+      "bytes": 191,
+      "sha256": "871c46094773f2a2377b8d43bdab918ac10b3fc2b856f30fbda324329041ec8e"
+    },
+    {
+      "path": "examples/consumer.tsx",
+      "bytes": 943,
+      "sha256": "ff5dc1ecff1707794e0de807f98d42444ca4de915cac37d5f9e8b3a802129ffd"
+    },
+    {
+      "path": "index.html",
+      "bytes": 307,
+      "sha256": "c7fb64c0b3e308df21966505f5968eb41ee3a9648d79fa23075fe1f52412b504"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 40805,
+      "sha256": "1933d06553c8fcb8aa60bd7eed952ace5afa509483d4021f5ba8a4b0cb048065"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1141,
+      "sha256": "5b9cd6d6620196268354384b874ddd2be6c7f418fd45b22e2d5e83e1dd93c876"
+    },
+    {
+      "path": "scripts/provenance.mjs",
+      "bytes": 4121,
+      "sha256": "74ba44235a3a2c27c01d715e33955bd17131f3e22854d815441e71cae2662c11"
+    },
+    {
+      "path": "scripts/verify-consumer.mjs",
+      "bytes": 2231,
+      "sha256": "d8398d62c9f7f88bba8666c7b312f8953baeff2ab50ad7aa829bf5410e5d28ad"
     },
     {
       "path": "src/index.tsx",
-      "sha256": "4d0f5ec78c96f6773434b1640a20191cb004808aacfcc6d0f45efefeb522e6fa",
-      "bytes": 751
+      "bytes": 883,
+      "sha256": "98f5ed2d4206bc29edfe2fb3bd5a21e304f681a3c1ffb8164444a8fa30c0bb08"
+    },
+    {
+      "path": "src/styles.css",
+      "bytes": 1363,
+      "sha256": "de77ae852c964f50cdd9a2bf162769328a77f3e9c672aca91f8e25c9a216c721"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 245,
+      "sha256": "f6eec5768875188dc055663a44a60f0a4a141b6022f4d36708e7cbc62010e277"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 815,
+      "sha256": "2359cf48a104d1c7510f53b0ff61e941a3240e4d2ef3950699a3d85fa87f3a91"
     }
   ]
 }
