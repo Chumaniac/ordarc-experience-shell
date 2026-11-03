@@ -4,9 +4,38 @@
   "description": "Presentation components and a standalone interface example.",
   "type": "module",
   "license": "MIT",
-  "exports": { ".": "./src/index.tsx" },
-  "files": ["src", "index.html", "demo.tsx", "demo.css", "vite.config.ts", "tsconfig.json", "README.md", "LICENSE"],
-  "scripts": { "dev": "vite --host 127.0.0.1 --port 18872 --strictPort", "build": "vite build" },
-  "peerDependencies": { "react": "^18.3.1" },
-  "devDependencies": { "@types/react": "^18.3.25", "@types/react-dom": "^18.3.7", "react": "18.3.1", "react-dom": "18.3.1", "typescript": "^5.9.3", "vite": "7.3.7" }
+  "exports": {
+    ".": "./src/index.tsx"
+  },
+  "files": [
+    "src",
+    "index.html",
+    "demo.tsx",
+    "demo.css",
+    "vite.config.ts",
+    "tsconfig.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 18872 --strictPort",
+    "build": "npm run typecheck && vite build",
+    "typecheck": "tsc --noEmit",
+    "test:consumer": "node scripts/verify-consumer.mjs"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.25",
+    "@types/react-dom": "^18.3.7",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "typescript": "^5.9.3",
+    "vite": "7.3.7",
+    "@types/node": "^22.18.0"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  }
 }
