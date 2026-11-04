@@ -29,6 +29,11 @@ last command installs the actual tarball into a fresh directory and checks its
 consumer types and production build. These checks do not certify every host UI
 or replace assistive-technology review.
 
+The demo uses a disclosure menu at widths up to 720px. Its button exposes the
+expanded state, Escape returns focus to the button, and choosing a destination,
+clicking outside or resizing to desktop closes it. This interaction belongs to
+the demo; the headless header still accepts arbitrary presentation slots.
+
 ## Styles and reproducible source
 
 The component entry is headless: it imports no stylesheet. For the optional
