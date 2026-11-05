@@ -9,7 +9,7 @@ MIT applies only to this independently authored package. It does not relicense t
 ## Slots and semantics
 
 `ProductHeader` supplies the header element; provide a brand link and, when needed,
-a `nav` with a meaningful accessible name. Use one page-level banner and main
+a `nav` with a meaningful accessible name, or `ProductNavigation` with link children. Use one page-level banner and main
 landmark. `ProductFooter` supplies the footer and named navigation: its children
 are links, not another `nav` or `footer`. Set `navigationLabel` for the page
 language and to distinguish multiple navigation regions; the compatible default
@@ -29,10 +29,21 @@ last command installs the actual tarball into a fresh directory and checks its
 consumer types and production build. These checks do not certify every host UI
 or replace assistive-technology review.
 
-The demo uses a disclosure menu at widths up to 720px. Its button exposes the
-expanded state, Escape returns focus to the button, and choosing a destination,
-clicking outside or resizing to desktop closes it. This interaction belongs to
-the demo; the headless header still accepts arbitrary presentation slots.
+`ProductNavigation` supplies the reusable disclosure navigation used by both the
+demo and independent consumer. Pass links as children, `navigationLabel` for its
+navigation region and `toggleLabel` for the button, in the page language (compatible
+Chinese defaults are `主要导航` and `菜单`). Each instance generates its own control
+ID. It collapses at widths up to 720px, exposes `aria-expanded`, returns focus on
+Escape, and closes after choosing a destination, an outside pointer press or a
+resize to desktop. It is a disclosure of ordinary links, with no menu-role or
+focus trap. Viewport and outside-pointer listeners are removed on unmount.
+
+Visibility uses native hidden attributes and settles after hydration; server
+rendering keeps the links available. Import the optional styles for the supplied
+header layout, or style the `product-navigation`, `product-navigation-toggle` and
+`product-navigation-links` classes in the host. Keep hidden elements hidden and
+use the same 720px breakpoint. `ProductHeader` continues to accept arbitrary slots;
+using the navigation component is optional.
 
 ## Styles and reproducible source
 

@@ -1,47 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { ProductHeader, ProductFooter, ServiceCard } from './src/index';
+import { ProductHeader, ProductNavigation, ProductFooter, ServiceCard } from './src/index';
 import './src/styles.css';
 import './demo.css';
 
 function Demo() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const header = useRef<HTMLDivElement>(null);
-  const menuButton = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (!menuOpen) return;
-    const closeOutside = (event: PointerEvent) => {
-      if (event.target instanceof Node && !header.current?.contains(event.target)) setMenuOpen(false);
-    };
-    const desktop = window.matchMedia('(min-width: 721px)');
-    const closeOnResize = () => { if (desktop.matches) setMenuOpen(false); };
-    document.addEventListener('pointerdown', closeOutside);
-    desktop.addEventListener('change', closeOnResize);
-    return () => {
-      document.removeEventListener('pointerdown', closeOutside);
-      desktop.removeEventListener('change', closeOnResize);
-    };
-  }, [menuOpen]);
-
   return <>
   <a className="skip-link" href="#content">跳到主要内容</a>
-  <div ref={header} onKeyDown={event => {
-    if (event.key === 'Escape' && menuOpen) {
-      setMenuOpen(false);
-      menuButton.current?.focus();
-    }
-  }}>
-    <ProductHeader>
-      <a className="brand" href="#content">Ordarc</a>
-      <button ref={menuButton} className="menu-toggle" type="button" aria-expanded={menuOpen}
-        aria-controls="primary-navigation" onClick={() => setMenuOpen(open => !open)}>菜单</button>
-      <nav id="primary-navigation" className={menuOpen ? 'primary-navigation is-open' : 'primary-navigation'}
-        aria-label="主要导航" onClick={event => {
-          if (event.target instanceof Element && event.target.closest('a[href]')) setMenuOpen(false);
-        }}><a href="#services">浏览栏目</a><a href="#help">使用说明</a></nav>
-    </ProductHeader>
-  </div>
+  <ProductHeader>
+    <a className="brand" href="#content">Ordarc</a>
+    <ProductNavigation><a href="#services">浏览栏目</a><a href="#help">使用说明</a></ProductNavigation>
+  </ProductHeader>
   <main id="content" tabIndex={-1}>
     <p className="eyebrow">Ordarc / 界面样例</p><h1>命盘、问事与研习</h1>
     <p className="intro">三个栏目的布局示例。查看资料如何排列、说明放在哪里，以及记录如何组织。</p>

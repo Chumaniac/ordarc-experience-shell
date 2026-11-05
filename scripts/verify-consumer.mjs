@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 const keep=process.argv.includes('--keep');
 const root=fileURLToPath(new URL('../',import.meta.url)),temporary=await realpath(await mkdtemp(path.join(tmpdir(),'ordarc-consumer-')));
-function run(command,args,cwd){const result=spawnSync(command,args,{cwd,encoding:'utf8',maxBuffer:2*1024*1024,stdio:['ignore','pipe','pipe']});if(result.error||result.status!==0)throw new Error('Consumer check failed: '+(result.stderr||result.error?.message));return result.stdout;}
+function run(command,args,cwd){const result=spawnSync(command,args,{cwd,encoding:'utf8',maxBuffer:2*1024*1024,stdio:['ignore','pipe','pipe']});if(result.error||result.status!==0)throw new Error('Consumer check failed: '+(result.stderr||result.stdout||result.error?.message||`exit ${result.status}`));return result.stdout;}
 try{
   const locked=JSON.parse(await readFile(path.join(root,'package-lock.json'),'utf8'));
   const packed=JSON.parse(run('npm',['pack','--json','--pack-destination',temporary],root))[0];
