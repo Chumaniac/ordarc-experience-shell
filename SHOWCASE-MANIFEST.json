@@ -3,10 +3,10 @@
   "product": "Ordarc experience shell",
   "scope": "presentation-only",
   "license": "MIT",
-  "sourceCommit": "dc02c4056acce54ec26404134db2ed7091abde82",
+  "sourceCommit": "0a78ae2e134ed4bd5a30e4b9567f08f70678d263",
   "includesWorkingTreeChanges": false,
   "manifestSelfExcluded": true,
-  "sourceTreeSha256": "569ad9959b697fb88738014b32738671748fe9a338231c1f6e79f18f81c2855b",
+  "sourceTreeSha256": "51e8a08f44fa3ef475fa10d98fdc39f3944eda50f8d08de972772f6e8e3723ba",
   "files": [
     {
       "path": ".github/workflows/check.yml",
@@ -25,18 +25,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 3753,
-      "sha256": "e51ba9d7a41886093917b2050735a1a65f1197cd190be4b2db97539b9fabfb4a"
+      "bytes": 4586,
+      "sha256": "ced9265a12a8c0cf14a41a97bfe2d24cd43a61800f6d6c2ac7b9d219ac07e9f2"
     },
     {
       "path": "demo.css",
-      "bytes": 2046,
-      "sha256": "4fc1812a287921796000863add3974b3df6306d97aeedc8b60ddcf0eb080bcba"
+      "bytes": 1511,
+      "sha256": "6c2f0258ce2b6728e7054f6f7c67011162c44be204fca554b4b7f7e732a7ad9b"
     },
     {
       "path": "demo.tsx",
-      "bytes": 3235,
-      "sha256": "93ed057c5b9afc56d42b932a892706738c4870078d29826c5ceed5d97cdcf70b"
+      "bytes": 1823,
+      "sha256": "c0523cfc358c39b57ff809f51fe7404db8c2143d918d906b7181fde965b76a0f"
     },
     {
       "path": "examples/consumer.html",
@@ -45,8 +45,8 @@
     },
     {
       "path": "examples/consumer.tsx",
-      "bytes": 943,
-      "sha256": "ff5dc1ecff1707794e0de807f98d42444ca4de915cac37d5f9e8b3a802129ffd"
+      "bytes": 1038,
+      "sha256": "1517ad80c3eccf2f8a218c9288f92306af08c9edd7d9c07b806e2d41efadaf17"
     },
     {
       "path": "index.html",
@@ -70,18 +70,18 @@
     },
     {
       "path": "scripts/verify-consumer.mjs",
-      "bytes": 2231,
-      "sha256": "d8398d62c9f7f88bba8666c7b312f8953baeff2ab50ad7aa829bf5410e5d28ad"
+      "bytes": 2271,
+      "sha256": "f69d21d280823bdf8ee57a8182ed846ca37da52b711b6342a83a8abfd4fa567e"
     },
     {
       "path": "src/index.tsx",
-      "bytes": 883,
-      "sha256": "98f5ed2d4206bc29edfe2fb3bd5a21e304f681a3c1ffb8164444a8fa30c0bb08"
+      "bytes": 2755,
+      "sha256": "4dccfe95d10da966d5df23a21fa30f6de56e2d078abab60f182ed1cce91f5640"
     },
     {
       "path": "src/styles.css",
-      "bytes": 1363,
-      "sha256": "de77ae852c964f50cdd9a2bf162769328a77f3e9c672aca91f8e25c9a216c721"
+      "bytes": 2118,
+      "sha256": "5b0d435e5ecfdcd481b2eadad746346209ec73817bcc946fc0c01547f7fe210b"
     },
     {
       "path": "tsconfig.json",
