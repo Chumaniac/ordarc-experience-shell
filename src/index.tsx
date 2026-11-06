@@ -43,6 +43,40 @@ export function ProductNavigation({ children, navigationLabel = '主要导航', 
   </div>;
 }
 
+export interface ProductTabItem { id: string; label: string; panel: ReactNode }
+
+export function ProductTabs({ items, defaultTabId, ariaLabel = '内容分区', onTabChange }: {
+  items: readonly ProductTabItem[]; defaultTabId?: string; ariaLabel?: string; onTabChange?: (id: string) => void;
+}) {
+  const prefix = useId();
+  const [selected, setSelected] = useState(() => items.find(item => item.id === defaultTabId)?.id ?? items[0]?.id ?? '');
+  const buttons = useRef(new Map<string, HTMLButtonElement>());
+  if (items.some(item => !item.id.trim() || !item.label.trim()) || new Set(items.map(item => item.id)).size !== items.length) {
+    throw new Error('ProductTabs requires non-empty labels and unique non-empty IDs.');
+  }
+  const active = items.some(item => item.id === selected) ? selected : items[0]?.id ?? '';
+  // Reconcile before committing: a removed item must not reactivate when re-added.
+  if (selected !== active) setSelected(active);
+  if (!items.length) return null;
+  return <div className="product-tabs">
+    <div className="product-tablist" role="tablist" aria-label={ariaLabel} aria-orientation="horizontal">
+      {items.map((item, index) => <button type="button" role="tab" className="product-tab" key={item.id}
+        id={prefix + '-tab-' + index} aria-controls={prefix + '-panel-' + index}
+        aria-selected={active === item.id} tabIndex={active === item.id ? 0 : -1}
+        ref={element => { if (element) buttons.current.set(item.id, element); else buttons.current.delete(item.id); }}
+        onClick={() => { if (active !== item.id) { setSelected(item.id); onTabChange?.(item.id); } }}
+        onKeyDown={event => {
+          const next = event.key === 'ArrowRight' ? (index + 1) % items.length : event.key === 'ArrowLeft' ? (index - 1 + items.length) % items.length : event.key === 'Home' ? 0 : event.key === 'End' ? items.length - 1 : null;
+          if (next === null) return;
+          event.preventDefault(); buttons.current.get(items[next].id)?.focus();
+        }}>{item.label}</button>)}
+    </div>
+    {items.map((item, index) => <div role="tabpanel" className="product-tabpanel" key={item.id}
+      id={prefix + '-panel-' + index} aria-labelledby={prefix + '-tab-' + index}
+      hidden={active !== item.id} tabIndex={0}>{item.panel}</div>)}
+  </div>;
+}
+
 export function ProductFooter({ name, description, children, navigationLabel = '页脚导航' }: { name: string; description: string; children: ReactNode; navigationLabel?: string }) {
   return <footer className="site-footer"><span><span translate="no">{name}</span><small>{description}</small></span><nav aria-label={navigationLabel}>{children}</nav></footer>;
 }

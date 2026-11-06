@@ -65,3 +65,42 @@ history. A clean build records `dist/BUILD-PROVENANCE.json` with actual input an
 output digests, lockfile, Node/npm/Vite/TypeScript versions and license metadata.
 Draft builds explicitly report working-tree changes. The receipt excludes itself
 and does not prove a hosted release, source authorship or business acceptance.
+
+
+## Manual content tabs
+
+`ProductTabs` is an uncontrolled, presentation-only horizontal tab set. Pass stable,
+unique non-empty `id` values, plain non-empty `label` strings and React `panel`
+content through `items`. Set `ariaLabel` for the page language. `defaultTabId`
+chooses the initial item; a missing/invalid default falls back to the first item.
+Changing the default later does not control selection. Empty arrays render nothing;
+invalid/duplicate IDs or labels are rejected. Existing header/navigation/footer/card
+APIs are unchanged.
+
+Left/Right wrap focus; Home/End focus the first/last control. Focus movement does
+not activate a panel. Native Enter, Space or click activates it. A single selected
+tab enters the page tab sequence, and each panel has unique generated IDs and
+`aria-controls`/`aria-labelledby` links. This follows the
+[WAI-ARIA manual activation pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-manual/).
+
+Inactive panels remain mounted and hidden, preserving their inputs and child state
+across ordinary tab switches. Removing an item explicitly unmounts its content;
+selection falls back to the first remaining item and does not resurrect when the
+item returns. Hosts own focus if they remove focused content. `onTabChange` fires
+only for an actual user activation change, not initial or roster fallback selection.
+The component changes no URL, storage, server state or business permissions.
+
+Import the existing optional stylesheet for focus/selected styles, or style
+`product-tabs`, `product-tablist`, `product-tab`, and `product-tabpanel` in the host;
+keep hidden panels hidden. The entry still imports no CSS and works in React 18
+server rendering. There are no global listeners, timers, body copies or added
+runtime dependencies. Retaining panels intentionally retains their content: use
+small tab sets and manage large/async content in the host rather than treating
+tabs as an unlimited cache. Local bounds/cleanup are not a CPU or memory benchmark.
+
+The demo and actual packed consumer use the component. Consumer verification now
+also server-renders the installed tarball to check unique associations, selected
+states, retained panels and empty/invalid rosters. Native browser checks cover
+manual activation, input retention, independent instances, dynamic removal/reorder,
+no accidental callback, responsive layout and the existing mobile navigation;
+they do not replace an independent assistive-technology review.

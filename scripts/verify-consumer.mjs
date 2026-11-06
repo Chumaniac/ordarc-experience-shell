@@ -1,3 +1,4 @@
+import {build as bundle} from 'esbuild';
 import {mkdtemp,realpath,readFile,writeFile,copyFile,rm,stat} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
@@ -18,5 +19,14 @@ try{
   run(process.execPath,[path.join(root,'node_modules/typescript/bin/tsc'),'--noEmit','--strict','--skipLibCheck','--jsx','react-jsx','--module','esnext','--moduleResolution','bundler','--target','es2022','--types','react,react-dom','consumer.tsx'],temporary);
   run(process.execPath,[path.join(root,'node_modules/vite/bin/vite.js'),'build',temporary],temporary);
   if(!(await stat(path.join(temporary,'dist/index.html'))).isFile())throw new Error('Consumer build missing');
-  console.log(JSON.stringify({packedFiles:packed.files.length,independentTypecheck:true,independentBuild:true,usesProductApi:false,consumerDirectory:keep?temporary:undefined}));
+  const ssrFile=path.join(temporary,'tabs-ssr.cjs');
+  const probe=`import React from 'react';import {renderToStaticMarkup} from 'react-dom/server';import assert from 'node:assert/strict';import {ProductTabs} from '@ordarc/experience-shell';
+    const items=[{id:'first',label:'First',panel:<input defaultValue="KEPT"/>},{id:'notes',label:'Notes',panel:<p>Notes</p>}];
+    const html=renderToStaticMarkup(<><ProductTabs items={items} defaultTabId="notes"/><ProductTabs items={items} defaultTabId="missing"/></>);
+    const controls=[...html.matchAll(/aria-controls="([^"]+)"/g)].map(row=>row[1]);assert.equal(controls.length,4);assert.equal(new Set(controls).size,4);for(const id of controls)assert(html.includes('id="'+id+'"'));
+    assert.equal((html.match(/aria-selected="true"/g)||[]).length,2);assert.equal((html.match(/role="tabpanel"/g)||[]).length,4);assert.equal((html.match(/hidden=""/g)||[]).length,2);
+    assert.equal(renderToStaticMarkup(<ProductTabs items={[]}/>),'');assert.throws(()=>renderToStaticMarkup(<ProductTabs items={[items[0],items[0]]}/>));assert(!html.includes('<style'));console.log('SSR tabs: unique associations, selection, retained panels, empty/invalid roster and headless rendering passed.');`;
+  await bundle({stdin:{contents:probe,loader:'tsx',resolveDir:temporary},bundle:true,platform:'node',format:'cjs',outfile:ssrFile,logLevel:'silent'});
+  run(process.execPath,[ssrFile],temporary);
+  console.log(JSON.stringify({packedFiles:packed.files.length,independentTypecheck:true,independentBuild:true,ssrTabs:true,usesProductApi:false,consumerDirectory:keep?temporary:undefined}));
 }finally{if(!keep)await rm(temporary,{recursive:true,force:true});}
