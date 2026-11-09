@@ -104,3 +104,10 @@ states, retained panels and empty/invalid rosters. Native browser checks cover
 manual activation, input retention, independent instances, dynamic removal/reorder,
 no accidental callback, responsive layout and the existing mobile navigation;
 they do not replace an independent assistive-technology review.
+
+
+## 本地工作台体验更新（2026-11-09）
+
+从只有未绑定textarea的展示样例变为本机文字记录工作台：示例、栏目、搜索、新建/保存、刷新恢复、10次正文旧版本、JSON/Markdown导出、受校验的JSON导入与删除。
+
+实现范围、启动方式与验证边界见 [体验改造说明](docs/PRODUCT_EXPERIENCE.md)。

@@ -1,16 +1,379 @@
-:root{--demo-foreground:#e9e6e2;--demo-background:#101215;--demo-muted:#bdbbb8;--demo-accent:#d0bd9b;--demo-border:#303237;--demo-panel:#181b20;color-scheme:dark;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--demo-foreground);background:var(--demo-background);font-synthesis:none}
-*{box-sizing:border-box}body{margin:0}a{color:inherit;text-decoration:none}
-a:focus-visible,button:focus-visible{outline:2px solid var(--demo-accent);outline-offset:5px}
-.brand{font-family:Georgia,serif;font-size:26px;letter-spacing:.03em}
-main{max-width:1120px;margin:auto;padding:88px 24px 56px;outline:none}
-.eyebrow{font-size:13px;letter-spacing:.1em;color:var(--demo-accent)}
-h1{font-family:Georgia,"Songti SC",serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.3;margin:28px 0}
-.intro{color:var(--demo-muted);line-height:1.9;max-width:560px}
-.service-browser{margin-top:48px;scroll-margin-top:24px}
-.help h2{font-size:19px;font-weight:500;margin:0 0 16px}.help p{font-size:14px;line-height:1.9;color:var(--demo-muted)}
-.tag{display:block;margin-top:28px;font-size:12px;color:var(--demo-accent)}
-.help{margin-top:56px;padding:28px 0;border-top:1px solid var(--demo-border);scroll-margin-top:24px}
-.skip-link{position:fixed;top:-80px;left:16px;padding:10px;background:var(--demo-panel);z-index:2}.skip-link:focus{top:12px}
-@media(max-width:720px){main{padding-top:48px}.service-browser{margin-top:36px}}
+:root {
+  --demo-foreground: #e9e6e2;
+  --demo-background: #101215;
+  --demo-muted: #bdbbb8;
+  --demo-accent: #d0bd9b;
+  --demo-border: #303237;
+  --demo-panel: #181b20;
+  color-scheme: dark;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    sans-serif;
+  color: var(--demo-foreground);
+  background: var(--demo-background);
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--demo-accent);
+  outline-offset: 5px;
+}
+.brand {
+  font-family: Georgia, serif;
+  font-size: 26px;
+  letter-spacing: 0.03em;
+}
+main {
+  max-width: 1120px;
+  margin: auto;
+  padding: 88px 24px 56px;
+  outline: none;
+}
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--demo-accent);
+}
+h1 {
+  font-family: Georgia, "Songti SC", serif;
+  font-weight: 500;
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: 1.3;
+  margin: 28px 0;
+}
+.intro {
+  color: var(--demo-muted);
+  line-height: 1.9;
+  max-width: 560px;
+}
+.service-browser {
+  margin-top: 48px;
+  scroll-margin-top: 24px;
+}
+.help h2 {
+  font-size: 19px;
+  font-weight: 500;
+  margin: 0 0 16px;
+}
+.help p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--demo-muted);
+}
+.tag {
+  display: block;
+  margin-top: 28px;
+  font-size: 12px;
+  color: var(--demo-accent);
+}
+.help {
+  margin-top: 56px;
+  padding: 28px 0;
+  border-top: 1px solid var(--demo-border);
+  scroll-margin-top: 24px;
+}
+.skip-link {
+  position: fixed;
+  top: -80px;
+  left: 16px;
+  padding: 10px;
+  background: var(--demo-panel);
+  z-index: 2;
+}
+.skip-link:focus {
+  top: 12px;
+}
+@media (max-width: 720px) {
+  main {
+    padding-top: 48px;
+  }
+  .service-browser {
+    margin-top: 36px;
+  }
+}
 
-.demo-note{display:grid;gap:8px;margin-top:24px;font-size:14px}.demo-note textarea{width:100%;font:inherit;line-height:1.6;padding:12px;color:var(--demo-foreground);background:var(--demo-background);border:1px solid var(--demo-border);border-radius:6px}
+.demo-note {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+  font-size: 14px;
+}
+.demo-note textarea {
+  width: 100%;
+  font: inherit;
+  line-height: 1.6;
+  padding: 12px;
+  color: var(--demo-foreground);
+  background: var(--demo-background);
+  border: 1px solid var(--demo-border);
+  border-radius: 6px;
+}
+
+/* Shared product experience rules · 2026-11-09 */
+:root {
+  color-scheme: light;
+  --tool-bg: #f7f7f5;
+  --tool-surface: #fff;
+  --tool-ink: #242424;
+  --tool-muted: #62655f;
+  --tool-line: #dedfd9;
+  --tool-accent: #31594d;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+}
+body {
+  background: var(--tool-bg);
+  color: var(--tool-ink);
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button,
+a,
+input,
+select,
+textarea,
+summary {
+  touch-action: manipulation;
+}
+button {
+  min-height: 44px;
+}
+button,
+a,
+input,
+select,
+textarea {
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+textarea {
+  line-height: 1.7;
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+p,
+li,
+td {
+  overflow-wrap: anywhere;
+}
+table {
+  font-variant-numeric: tabular-nums;
+}
+pre {
+  overflow: auto;
+  max-width: 100%;
+}
+:focus-visible {
+  outline: 2px solid var(--tool-accent);
+  outline-offset: 3px;
+}
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--tool-accent);
+  outline-offset: 3px;
+}
+[hidden] {
+  display: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --demo-foreground: #242424;
+  --demo-background: #f7f7f5;
+  --demo-muted: #62655f;
+  --demo-accent: #31594d;
+  --demo-border: #dedfd9;
+  --demo-panel: #fff;
+  --ordarc-surface: #f7f7f5;
+  --ordarc-foreground: #242424;
+  --ordarc-card: #fff;
+  --ordarc-focus: #31594d;
+}
+main {
+  padding-top: 40px;
+}
+h1 {
+  font: 600 clamp(26px, 4vw, 36px) / 1.3 system-ui;
+  margin: 16px 0;
+}
+.site-header nav,
+.site-footer nav,
+.site-footer small,
+.service-card p {
+  color: #62655f;
+}
+.site-header,
+.site-footer {
+  border-color: #dedfd9;
+}
+.notes-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+.notes-list,
+.note-editor {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #dedfd9;
+  padding: 20px;
+  border-radius: 8px;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+button,
+.import-button {
+  border: 1px solid #dedfd9;
+  background: #fff;
+  color: #242424;
+  border-radius: 6px;
+  padding: 9px 12px;
+  cursor: pointer;
+}
+.primary {
+  background: #31594d;
+  color: #fff;
+  border-color: #31594d;
+}
+label {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  margin: 16px 0;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dedfd9;
+  background: #fff;
+  color: #242424;
+  border-radius: 6px;
+  min-height: 44px;
+}
+.muted,
+.record-item small {
+  color: #62655f;
+  font-size: 13px;
+}
+.record-item {
+  width: 100%;
+  display: grid;
+  gap: 6px;
+  text-align: left;
+  margin-top: 8px;
+  overflow-wrap: anywhere;
+}
+.selected {
+  border-color: #31594d;
+  background: #eef2ee;
+}
+.editor-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+.editor-heading h2 {
+  margin: 0;
+  font-size: 18px;
+}
+.editor-heading span {
+  font-size: 12px;
+  color: #62655f;
+}
+.note-preview {
+  white-space: pre-wrap;
+  padding: 16px;
+  background: #f7f7f5;
+}
+.import-button {
+  margin: 0;
+  display: block;
+}
+.import-button input {
+  width: 180px;
+  padding: 0;
+  border: 0;
+  min-height: 24px;
+}
+.revision {
+  padding: 12px 0;
+  border-top: 1px solid #dedfd9;
+}
+details {
+  margin-top: 20px;
+}
+summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 10px 0;
+}
+.revision p {
+  white-space: pre-wrap;
+}
+@media (max-width: 720px) {
+  .notes-layout {
+    grid-template-columns: 1fr;
+  }
+  .notes-list {
+    max-height: 340px;
+    overflow: auto;
+  }
+  .note-editor {
+    padding: 16px;
+  }
+}
+
+.skip-link:not(:focus){clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap;padding:0}
