@@ -16,7 +16,8 @@
     "vite.config.ts",
     "tsconfig.json",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "demo-summary.ts"
   ],
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 18872 --strictPort",
@@ -24,7 +25,8 @@
     "typecheck": "tsc --noEmit",
     "test:consumer": "node scripts/verify-consumer.mjs",
     "source:write": "node scripts/provenance.mjs source-write",
-    "source:verify": "node scripts/provenance.mjs source-verify"
+    "source:verify": "node scripts/provenance.mjs source-verify",
+    "test:summary": "node scripts/test-summary.mjs"
   },
   "peerDependencies": {
     "react": "^18.3.1"

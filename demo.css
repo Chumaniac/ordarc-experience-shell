@@ -377,3 +377,5 @@ summary {
 }
 
 .skip-link:not(:focus){clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap;padding:0}
+
+.structured-note{border-top:1px solid #dedfd9;margin-top:24px;padding-top:16px}.note-summary-grid{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr))}.note-summary-grid article{border:1px solid #dedfd9;border-radius:6px;padding:12px;min-width:0}.note-summary-grid h4{margin:0 0 12px;font-size:14px}.note-summary-grid ul{margin:0;padding-left:18px}.note-summary-grid li{margin:8px 0;white-space:pre-wrap}@media(max-width:850px){.note-summary-grid{grid-template-columns:1fr}}

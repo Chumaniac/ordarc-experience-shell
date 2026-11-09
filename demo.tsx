@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { ProductHeader, ProductNavigation, ProductFooter } from "./src/index";
 import "./src/styles.css";
 import "./demo.css";
+import { summarizeNote } from "./demo-summary";
 type Note = {
   id: string;
   title: string;
@@ -93,6 +94,7 @@ function Demo() {
     window.addEventListener("beforeunload", warn);
     return () => window.removeEventListener("beforeunload", warn);
   }, [dirty]);
+  const summary = summarizeNote(draft.notes);
   const canLeave = () =>
     !dirty || window.confirm("当前编辑尚未保存，放弃这些修改？");
   const edit = (patch: Partial<Note>) => {
@@ -284,7 +286,11 @@ function Demo() {
               <button
                 onClick={() =>
                   download(
-                    JSON.stringify({ version: 1, note: draft }, null, 2),
+                    JSON.stringify(
+                      { version: 1, note: draft, summary },
+                      null,
+                      2,
+                    ),
                     "ordarc-note.json",
                     "application/json",
                   )
@@ -339,6 +345,44 @@ function Demo() {
               ) : null}
             </div>
             <p role="status">{message}</p>
+            <section className="structured-note" aria-label="结构化记录">
+              <h3>记录摘要</h3>
+              <p className="muted">
+                按正文中的“材料、观察、下一步”分组，编辑正文后同步更新。
+              </p>
+              <div className="note-summary-grid">
+                {(
+                  [
+                    { key: "sources", title: "资料来源" },
+                    { key: "observations", title: "观察与问题" },
+                    { key: "nextSteps", title: "下一步" },
+                  ] as const
+                ).map((group) => (
+                  <article key={group.key}>
+                    <h4>{group.title}</h4>
+                    {summary[group.key].length ? (
+                      <ul>
+                        {summary[group.key].map((line, i) => (
+                          <li key={i}>{line}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="muted">
+                        尚未填写。可在正文中加入对应标题。
+                      </p>
+                    )}
+                  </article>
+                ))}
+              </div>
+              {summary.paragraphs.length ? (
+                <article>
+                  <h4>其他记录</h4>
+                  {summary.paragraphs.map((line, i) => (
+                    <p key={i}>{line}</p>
+                  ))}
+                </article>
+              ) : null}
+            </section>
             <details>
               <summary>预览正文</summary>
               <article className="note-preview">

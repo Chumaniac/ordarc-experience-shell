@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 const root=fileURLToPath(new URL('../',import.meta.url));
-const sources=['docs/PRODUCT_EXPERIENCE.md','.gitignore','.github/workflows/check.yml','LICENSE','README.md','package.json','package-lock.json','index.html','demo.tsx','demo.css','vite.config.ts','tsconfig.json','src/index.tsx','src/styles.css','examples/consumer.html','examples/consumer.tsx','scripts/verify-consumer.mjs','scripts/provenance.mjs'].sort();
+const sources=['demo-summary.ts','scripts/test-summary.mjs','docs/PRODUCT_EXPERIENCE.md','.gitignore','.github/workflows/check.yml','LICENSE','README.md','package.json','package-lock.json','index.html','demo.tsx','demo.css','vite.config.ts','tsconfig.json','src/index.tsx','src/styles.css','examples/consumer.html','examples/consumer.tsx','scripts/verify-consumer.mjs','scripts/provenance.mjs'].sort();
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 async function inventory(directory,paths){const rows=[];for(const relative of paths){const file=path.join(directory,relative),info=await lstat(file);if(!info.isFile()||info.isSymbolicLink()||info.size>2*1024*1024)throw new Error('Expected a bounded regular source/build file');const bytes=await readFile(file);if(bytes.length!==info.size)throw new Error('File changed during provenance read');rows.push({path:relative,bytes:bytes.length,sha256:hash(bytes)});}return rows;}
 const tree=files=>hash(files.map(x=>x.path+'\0'+x.sha256+'\n').join(''));
