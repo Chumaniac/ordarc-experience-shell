@@ -3,10 +3,10 @@
   "product": "Ordarc experience shell",
   "scope": "presentation-only",
   "license": "MIT",
-  "sourceCommit": "dca72b567e157596a2a70221c3d241cf69235b4a",
+  "sourceCommit": "33c3aaec66ea6bd6ccea036197772c607f838cff",
   "includesWorkingTreeChanges": false,
   "manifestSelfExcluded": true,
-  "sourceTreeSha256": "b2f1f4d76d5a93e11d6b8d8867172309d4cd2e9f6738900e720c757b8bff7f84",
+  "sourceTreeSha256": "5dfce6f74c6d1e5ab7518102411f1c6a1edb13ca547056e565c386d51f4edb1e",
   "files": [
     {
       "path": ".github/workflows/check.yml",
@@ -25,18 +25,23 @@
     },
     {
       "path": "README.md",
-      "bytes": 7057,
-      "sha256": "dba22591fe3a34502a5d84cb2b931b72b1d802c6afa44a7347e481f19617436d"
+      "bytes": 7421,
+      "sha256": "b536e3b99685aeb31d2b925a9e903346f0516dec200023f592ab9ff226bbd2d8"
     },
     {
       "path": "demo.css",
-      "bytes": 1678,
-      "sha256": "0ca3cd23ea06ee55c5e4aebed51b94eeaa6ccec2cd5d15b690b099514be395e1"
+      "bytes": 6112,
+      "sha256": "33d114af4b38e7d2526b901ab4ac1232508d977b6090f453a45d41d8e31a8341"
     },
     {
       "path": "demo.tsx",
-      "bytes": 2278,
-      "sha256": "1e489833d04b8b77931c817809e8370f8c6b12f6a2ec1c91ddc53bb17e3b114d"
+      "bytes": 12864,
+      "sha256": "4571df98083ff560fa3e898df017315c3f28e5fc90e982dd0fcad6fd17d65dbe"
+    },
+    {
+      "path": "docs/PRODUCT_EXPERIENCE.md",
+      "bytes": 2259,
+      "sha256": "9a123009aa19c91106e51b742b84d8fcb569830a1fcb4747eab004803948abc5"
     },
     {
       "path": "examples/consumer.html",
@@ -65,8 +70,8 @@
     },
     {
       "path": "scripts/provenance.mjs",
-      "bytes": 4121,
-      "sha256": "74ba44235a3a2c27c01d715e33955bd17131f3e22854d815441e71cae2662c11"
+      "bytes": 4150,
+      "sha256": "6edf51bb3dc10fae7ad794f9a262b580f4633dee07b18d06d650b604f8abe461"
     },
     {
       "path": "scripts/verify-consumer.mjs",
@@ -80,8 +85,8 @@
     },
     {
       "path": "src/styles.css",
-      "bytes": 2933,
-      "sha256": "ae29d4a07f83873751198b67e25c63cce0144185379ed7226c1087258b80bc26"
+      "bytes": 3479,
+      "sha256": "e5ca9460f14bf1ca932227bf43d7e57aa315f9567ea8ed80478438b0dbc58ec2"
     },
     {
       "path": "tsconfig.json",
