@@ -3,15 +3,15 @@
   "product": "Ordarc experience shell",
   "scope": "presentation-only",
   "license": "MIT",
-  "sourceCommit": "33c3aaec66ea6bd6ccea036197772c607f838cff",
+  "sourceCommit": "a1ba387580c5056002633ee8f3b7195a68f2887c",
   "includesWorkingTreeChanges": false,
   "manifestSelfExcluded": true,
-  "sourceTreeSha256": "5dfce6f74c6d1e5ab7518102411f1c6a1edb13ca547056e565c386d51f4edb1e",
+  "sourceTreeSha256": "8f6bfd5912e21f31510a8a4a09ce857a0394d49db912c1c44e9a8f76fee1834c",
   "files": [
     {
       "path": ".github/workflows/check.yml",
-      "bytes": 589,
-      "sha256": "cc8bcd880b92e059c24a1e4e544e2cf42966a34f5ecf05b0b9316bca6fe4d810"
+      "bytes": 623,
+      "sha256": "58fc093c627b61e14255931812b8f765fd0586cb5664529e4bf01366254039ad"
     },
     {
       "path": ".gitignore",
@@ -29,19 +29,24 @@
       "sha256": "b536e3b99685aeb31d2b925a9e903346f0516dec200023f592ab9ff226bbd2d8"
     },
     {
+      "path": "demo-summary.ts",
+      "bytes": 1316,
+      "sha256": "32db94ca2d906e355aad2a98bcdbd2bc0f5f79c0b01398fabc8fbb59d2c94498"
+    },
+    {
       "path": "demo.css",
-      "bytes": 6112,
-      "sha256": "33d114af4b38e7d2526b901ab4ac1232508d977b6090f453a45d41d8e31a8341"
+      "bytes": 6603,
+      "sha256": "c8eae1d80354e73bc29f0468fea44606f0973b739a4fd5477ac341a327801886"
     },
     {
       "path": "demo.tsx",
-      "bytes": 12864,
-      "sha256": "4571df98083ff560fa3e898df017315c3f28e5fc90e982dd0fcad6fd17d65dbe"
+      "bytes": 14585,
+      "sha256": "b38d616ec693951f7dc19e27bacf3f843ab445737d3cb38dbb07543d7582c200"
     },
     {
       "path": "docs/PRODUCT_EXPERIENCE.md",
-      "bytes": 2259,
-      "sha256": "9a123009aa19c91106e51b742b84d8fcb569830a1fcb4747eab004803948abc5"
+      "bytes": 2563,
+      "sha256": "4e5fbec375d7d8fbf2dda4801dcef1479f8d25f8fe26a3648000f3f5766470cb"
     },
     {
       "path": "examples/consumer.html",
@@ -65,13 +70,18 @@
     },
     {
       "path": "package.json",
-      "bytes": 1141,
-      "sha256": "5b9cd6d6620196268354384b874ddd2be6c7f418fd45b22e2d5e83e1dd93c876"
+      "bytes": 1217,
+      "sha256": "e4fc09c5d8d4c2ca9b98590fa281df39e05eebf35072a162415a9464f9267e5e"
     },
     {
       "path": "scripts/provenance.mjs",
-      "bytes": 4150,
-      "sha256": "6edf51bb3dc10fae7ad794f9a262b580f4633dee07b18d06d650b604f8abe461"
+      "bytes": 4195,
+      "sha256": "59a4586b6a5ee3b41083040bf9367a7699b7a1ce8e246902ad6527ae8a01e5f9"
+    },
+    {
+      "path": "scripts/test-summary.mjs",
+      "bytes": 832,
+      "sha256": "64f44d1b694e378f4f1bafbb5d498ee934e8b003cea0a3a55b52c684d91e6f61"
     },
     {
       "path": "scripts/verify-consumer.mjs",
