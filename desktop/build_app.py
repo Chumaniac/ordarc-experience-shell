@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import plistlib
 import re
+import platform
 import shutil
 import subprocess
 import sys
@@ -90,7 +91,10 @@ def main():
         (resources / 'app.json').write_text(json.dumps(installed, indent=2))
         if needs_assets:
             shutil.copytree(ROOT / config.get('assets', 'dist'), resources / 'ui')
-        subprocess.run(['xcrun','swiftc','-swift-version','5','-O','-o',str(binary),
+        architecture = platform.machine()
+        if architecture not in {'arm64', 'x86_64'}:
+            raise SystemExit('MACOS_ARCHITECTURE_UNSUPPORTED')
+        subprocess.run(['xcrun','swiftc','-swift-version','5','-target',architecture+'-apple-macosx13.0','-O','-o',str(binary),
                         str(ROOT/'desktop/LocalWebServer.swift'),str(ROOT/'desktop/BackendRuntime.swift'),str(ROOT/'desktop/main.swift')],check=True)
         iconset = staging / 'AppIcon.iconset'
         subprocess.run([str(binary),'--render-icon',str(iconset)],check=True)
