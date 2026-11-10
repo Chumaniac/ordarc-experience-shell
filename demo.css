@@ -130,3 +130,15 @@ summary { cursor: pointer; color: #5f5f59; min-height: 28px; }
 .record-browser > .muted { padding: 0 10px; margin: 0; }
 .records-toggle { justify-content: space-between; border-color: var(--tool-line); background: transparent; }
 .note-meta select { appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%236c6c65' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3 4 3 3 3-3'/%3E%3C/svg%3E") no-repeat right 12px center; padding-right: 32px; }
+
+/* Ordarc · pine notebook. The record stays central; color clarifies location and actions. */
+:root{--tool-bg:#f7faf5;--tool-sidebar:#edf4ec;--tool-panel:#f1f7ee;--tool-ink:#29392e;--tool-muted:#607263;--tool-line:#d9e5d8;--tool-hover:#e1eddf;--tool-focus:#356c55;--tool-accent:#356c55;--demo-accent:#356c55}
+.app-sidebar{background:var(--tool-sidebar);border-color:var(--tool-line)}.app-mark{width:32px;height:32px;background:#356c55;color:#fff;border-color:#356c55;box-shadow:0 3px 8px #356c5520}.sidebar-label{color:#356c55;font-weight:550}.app-sidebar input{background:#fffdfb;border:1px solid #ccdccc}
+.sidebar-actions button:first-child{background:#fffdfb;border-color:var(--tool-line);color:#285341}.sidebar-actions button:hover{background:#dcecdf}.record-item:hover{background:#e1eddf}.record-item.selected{background:#d4e6d5;color:#285341;box-shadow:inset 3px 0 #356c55}
+.workspace-bar{background:#fffdfb;border-color:var(--tool-line)}.workspace-status{color:#356c55;background:#e9f2e6;border-radius:20px;padding:4px 10px}.workspace-status i{background:#356c55}
+.note-editor{background:#fffdfb;border:1px solid var(--tool-line);border-radius:14px;padding:28px;box-shadow:0 8px 30px #356c550b}.editor-heading{padding-bottom:20px;border-bottom:1px solid var(--tool-line);margin:0}.editor-heading h1{color:#285341;border-left:4px solid #356c55;padding-left:14px}
+.note-editor>label,.note-meta>label{color:#42624c}.note-editor input,.note-editor select,.note-editor textarea{border-color:#bdcfbb;background:#fff}.note-editor textarea{box-shadow:inset 0 1px 3px #28534108}.note-editor>.actions{background:#fffdfb;border-color:var(--tool-line)}
+button.primary{background:#356c55;border-color:#356c55;box-shadow:0 3px 8px #356c551c}button.primary:hover{background:#285341;border-color:#285341}button:hover,.import-button:hover{border-color:#9fbc9e;background:#eaf2e6}
+.structured-note{border-top:0;padding-top:4px}.structured-note>h3{color:#285341}.structured-note article{background:#f0f6ec;border-color:var(--tool-line);border-radius:11px}.structured-note article h4{color:#356c55}.note-preview{background:#f8fbf5;border:1px solid var(--tool-line);border-radius:10px;padding:18px}
+.revision{background:#fbfdf9;padding:18px;border:1px solid var(--tool-line);border-radius:10px;margin-bottom:10px}.revision>span{color:#607263}.help{border-color:var(--tool-line)}.help h2{color:#356c55}
+@media(max-width:720px){.note-editor{padding:18px}.editor-heading{gap:12px}.editor-heading h1{padding-left:10px}.workspace-status{font-size:11px}}
