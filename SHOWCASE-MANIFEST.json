@@ -3,10 +3,10 @@
   "product": "Ordarc experience shell",
   "scope": "presentation-only",
   "license": "MIT",
-  "sourceCommit": "1aae670aa563fce2f6744f96a7c70b766e1ed641",
+  "sourceCommit": "d229250cd4b7ec22f56c05773bd261075da1b35e",
   "includesWorkingTreeChanges": false,
   "manifestSelfExcluded": true,
-  "sourceTreeSha256": "7ba8dd018ffc5cdc80acb3dad104257084702b13203fa8ac887f47409d21f4ba",
+  "sourceTreeSha256": "928ef3eef47770439b07acc6afcfa3b68608416f9bbe8d664810b3760554609b",
   "files": [
     {
       "path": ".github/workflows/check.yml",
@@ -65,8 +65,8 @@
     },
     {
       "path": "desktop/build_app.py",
-      "bytes": 6427,
-      "sha256": "c3a34e2a20049f922aa57ffaf5dab99bb6283fb8578997fa77df1ce6299773b1"
+      "bytes": 6643,
+      "sha256": "caadb7ee34f3f0e0e32d26904a500edb4bc75a636af60dd227ac6f63849f226c"
     },
     {
       "path": "desktop/main.swift",
