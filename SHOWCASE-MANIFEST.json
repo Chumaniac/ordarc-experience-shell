@@ -3,10 +3,10 @@
   "product": "Ordarc experience shell",
   "scope": "presentation-only",
   "license": "MIT",
-  "sourceCommit": "a1ba387580c5056002633ee8f3b7195a68f2887c",
+  "sourceCommit": "1aae670aa563fce2f6744f96a7c70b766e1ed641",
   "includesWorkingTreeChanges": false,
   "manifestSelfExcluded": true,
-  "sourceTreeSha256": "8f6bfd5912e21f31510a8a4a09ce857a0394d49db912c1c44e9a8f76fee1834c",
+  "sourceTreeSha256": "7ba8dd018ffc5cdc80acb3dad104257084702b13203fa8ac887f47409d21f4ba",
   "files": [
     {
       "path": ".github/workflows/check.yml",
@@ -15,8 +15,8 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 27,
-      "sha256": "2e0051aa2ec871608f4ac5f32d59edbe6ca42a9e6613ef12025ef1f419f2c42d"
+      "bytes": 57,
+      "sha256": "e66d3c23593f1dc6f3288154eb1e4b41f9f1d57c322d262c1a49ac47d98c3b9c"
     },
     {
       "path": "LICENSE",
@@ -25,8 +25,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7421,
-      "sha256": "b536e3b99685aeb31d2b925a9e903346f0516dec200023f592ab9ff226bbd2d8"
+      "bytes": 7787,
+      "sha256": "14b6ca8a597c3cb23df7e071f5b2742919e151bf137d29e97f6e9a0b3f802bf2"
     },
     {
       "path": "demo-summary.ts",
@@ -35,13 +35,58 @@
     },
     {
       "path": "demo.css",
-      "bytes": 6603,
-      "sha256": "c8eae1d80354e73bc29f0468fea44606f0973b739a4fd5477ac341a327801886"
+      "bytes": 9483,
+      "sha256": "ad0def3ac7c310070afe58330ef196283c9b44b9786c9ed3d1259c1cebf128cb"
     },
     {
       "path": "demo.tsx",
-      "bytes": 14585,
-      "sha256": "b38d616ec693951f7dc19e27bacf3f843ab445737d3cb38dbb07543d7582c200"
+      "bytes": 15929,
+      "sha256": "4d83a1071c864c1e8cee14367cc21b034b3666df502f503512864c490265c74e"
+    },
+    {
+      "path": "desktop/BackendRuntime.swift",
+      "bytes": 7214,
+      "sha256": "0a9427013d3b18e5036a68b2f4ad1936b92d9797234008f7b9ce2cb74e45617b"
+    },
+    {
+      "path": "desktop/LocalWebServer.swift",
+      "bytes": 6651,
+      "sha256": "d665b3737a099df6a1ed2a108a5b68fe4f93b1e59774169869aa3adb6559731c"
+    },
+    {
+      "path": "desktop/README.md",
+      "bytes": 1923,
+      "sha256": "b4d9a1eaaf98012c1bd069e993f464619ed4fbd6355e908c79177324765dfa6f"
+    },
+    {
+      "path": "desktop/app.json",
+      "bytes": 172,
+      "sha256": "087aedaaa6c1951fef89e5e3233dfc558b2e6e97c85950753486f75c92232e43"
+    },
+    {
+      "path": "desktop/build_app.py",
+      "bytes": 6427,
+      "sha256": "c3a34e2a20049f922aa57ffaf5dab99bb6283fb8578997fa77df1ce6299773b1"
+    },
+    {
+      "path": "desktop/main.swift",
+      "bytes": 19614,
+      "sha256": "0561346466c29b4ef186846dfea01f2b810a5924edf46e76188c9e24b7b2b98b"
+    },
+    {
+      "path": "desktop/tests/BackendTests.swift",
+      "bytes": 4753,
+      "sha256": "d597a9bcb26d9a0cb8d29992c66a61a956369ce2e7872d64060e527d722d0296"
+    },
+    {
+      "path": "desktop/tests/ServerTests.swift",
+      "bytes": 2414,
+      "sha256": "516c26f14ba0850ee07678b971a42f8f1c8756c1fe46b464720428ea72c72ed5"
+    },
+    {
+      "path": "desktop/tests/backend_fixture.py",
+      "bytes": 1078,
+      "sha256": "0c78b12151a15fa5724b0803e312f001c367bea1ef70f94ed114e50d6c9c0d14"
     },
     {
       "path": "docs/PRODUCT_EXPERIENCE.md",
@@ -61,7 +106,7 @@
     {
       "path": "index.html",
       "bytes": 307,
-      "sha256": "c7fb64c0b3e308df21966505f5968eb41ee3a9648d79fa23075fe1f52412b504"
+      "sha256": "5741a3b4cf6430fbf4ca11c0b6ea8d5b117c2c966020f9bd613d6040a90ca57e"
     },
     {
       "path": "package-lock.json",
@@ -75,8 +120,8 @@
     },
     {
       "path": "scripts/provenance.mjs",
-      "bytes": 4195,
-      "sha256": "59a4586b6a5ee3b41083040bf9367a7699b7a1ce8e246902ad6527ae8a01e5f9"
+      "bytes": 4444,
+      "sha256": "44034d5871e9c61a0bc77c6d25804333864fb93fa1b8bed702cc58fa72a5455b"
     },
     {
       "path": "scripts/test-summary.mjs",
