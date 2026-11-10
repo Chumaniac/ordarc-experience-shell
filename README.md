@@ -111,3 +111,7 @@ they do not replace an independent assistive-technology review.
 从只有未绑定textarea的展示样例变为本机文字记录工作台：示例、栏目、搜索、新建/保存、刷新恢复、10次正文旧版本、JSON/Markdown导出、受校验的JSON导入与删除。
 
 实现范围、启动方式与验证边界见 [体验改造说明](docs/PRODUCT_EXPERIENCE.md)。
+
+## macOS application
+
+The record workspace now uses a quiet sidebar and a compact content area. Build its independent window application using [desktop/README.md](desktop/README.md); existing browser records remain in their original storage and can be moved through the existing JSON export/import flow. No astrology computation or external model service is added.

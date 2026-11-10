@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "name": "Ordarc",
+  "identifier": "com.chumaniac.ordarc",
+  "mark": "O",
+  "port": 19006,
+  "mode": "static",
+  "saveSelector": "[data-desktop-save]"
+}

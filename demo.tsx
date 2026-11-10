@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { ProductHeader, ProductNavigation, ProductFooter } from "./src/index";
 import "./src/styles.css";
 import "./demo.css";
 import { summarizeNote } from "./demo-summary";
@@ -65,7 +64,7 @@ function read(): { items: Note[]; error: string } {
     return {
       items: [],
       error:
-        "本机记录无法读取。原数据已保留，当前禁止覆盖保存。请检查浏览器存储。",
+        "本机记录无法读取。原数据已保留，当前禁止覆盖保存。请先导出记录并检查工作区存储。",
     };
   }
 }
@@ -83,7 +82,15 @@ function Demo() {
     [draft, setDraft] = useState<Note>(blank),
     [dirty, setDirty] = useState(false),
     [message, setMessage] = useState(initial.error),
-    [query, setQuery] = useState("");
+    [query, setQuery] = useState(""),
+    [compact, setCompact] = useState(false),
+    [recordsExpanded, setRecordsExpanded] = useState(false);
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 720px)");
+    const update = () => setCompact(media.matches);
+    update(); media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
   useEffect(() => {
     const warn = (e: BeforeUnloadEvent) => {
       if (dirty) {
@@ -136,13 +143,23 @@ function Demo() {
       persist([n, ...items.filter((x) => x.id !== n.id)]);
       setDraft(n);
       setDirty(false);
-      setMessage("已保存到此浏览器。");
+      setMessage("已保存到当前工作区。");
     } catch (e) {
       setMessage(
         e instanceof Error ? e.message : "保存失败，可先导出当前草稿。",
       );
     }
   }
+  useEffect(() => {
+    const handleSave = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "s") {
+        event.preventDefault();
+        save();
+      }
+    };
+    window.addEventListener("keydown", handleSave);
+    return () => window.removeEventListener("keydown", handleSave);
+  });
   async function importNote(file?: File) {
     try {
       if (!file) return;
@@ -164,24 +181,11 @@ function Demo() {
       <a className="skip-link" href="#content">
         跳到主要内容
       </a>
-      <ProductHeader>
-        <a className="brand" href="#content">
-          Ordarc
-        </a>
-        <ProductNavigation>
-          <a href="#records">记录</a>
-          <a href="#help">使用说明</a>
-        </ProductNavigation>
-      </ProductHeader>
-      <main id="content" tabIndex={-1}>
-        <p className="eyebrow">个人记录</p>
-        <h1>把观察和资料记在一起</h1>
-        <p className="intro">
-          整理研习笔记、问题和阅读备注。记录保存在此浏览器，可随时导出。
-        </p>
-        <div className="notes-layout">
-          <aside id="records" className="notes-list" aria-label="本机记录">
-            <div className="actions">
+      <div className="workspace-shell">
+          <aside id="records" className="notes-list app-sidebar" aria-label="本机记录">
+            <a className="app-brand" href="#content"><span className="app-mark" aria-hidden="true">O</span><strong>Ordarc</strong></a>
+            <p className="sidebar-label">工作区</p>
+            <div className="actions sidebar-actions">
               <button
                 onClick={() => {
                   if (canLeave()) {
@@ -208,6 +212,8 @@ function Demo() {
                 填入示例
               </button>
             </div>
+            <button className="records-toggle" type="button" hidden={!compact} aria-expanded={recordsExpanded} aria-controls="record-browser" onClick={() => setRecordsExpanded(!recordsExpanded)}>记录与搜索（{items.length}）</button>
+            <div id="record-browser" className="record-browser" hidden={compact && !recordsExpanded}>
             <label>
               搜索记录
               <input
@@ -218,6 +224,7 @@ function Demo() {
               />
             </label>
             <p className="muted">{items.length} / 50 条记录</p>
+            <div className="sidebar-records">
             {items
               .filter((n) => (n.title + n.kind).includes(query))
               .map((n) => (
@@ -237,12 +244,20 @@ function Demo() {
             {!items.length ? (
               <p className="muted">还没有记录。从示例或一条新记录开始。</p>
             ) : null}
+            </div>
+            </div>
+            <div className="sidebar-bottom"><a href="#help">使用说明</a><span>仅保存在当前工作区</span></div>
           </aside>
+        <div className="workspace-main">
+          <header className="workspace-bar"><span>个人记录</span><span className="workspace-status"><i aria-hidden="true" />本机工作区</span></header>
+          <main id="content" tabIndex={-1}>
+
           <section className="note-editor" aria-label="编辑记录">
             <div className="editor-heading">
-              <h2>{draft.title || "新记录"}</h2>
-              <span>{dirty ? "尚未保存" : "已载入"}</span>
+              <h1>{draft.title || "新记录"}</h1>
+              <span>{dirty ? "尚未保存" : items.some((item) => item.id === draft.id) ? "已保存" : "新建"}</span>
             </div>
+            <div className="note-meta">
             <label>
               标题
               <input
@@ -254,6 +269,7 @@ function Demo() {
             <label>
               栏目
               <select
+                aria-label="栏目"
                 value={draft.kind}
                 onChange={(e) => edit({ kind: e.target.value })}
               >
@@ -262,9 +278,12 @@ function Demo() {
                 <option>命盘</option>
               </select>
             </label>
+            </div>
             <label>
               记录正文
               <textarea
+                aria-label="记录正文"
+                aria-describedby="note-length"
                 rows={12}
                 maxLength={20000}
                 value={draft.notes}
@@ -272,12 +291,13 @@ function Demo() {
                 placeholder="写下资料来源、观察和下一步。"
               />
             </label>
-            <p className="muted">
+            <p className="muted" id="note-length">
               {draft.notes.length.toLocaleString()} / 20,000 字符
             </p>
             <div className="actions">
               <button
                 className="primary"
+                data-desktop-save="record"
                 onClick={save}
                 disabled={!dirty || !!initial.error}
               >
@@ -410,17 +430,15 @@ function Demo() {
               )}
             </details>
           </section>
-        </div>
         <section id="help" className="help">
           <h2>使用说明</h2>
           <p>
-            内容不上传。换浏览器前请导出；导入只载入草稿，保存前可检查。此工作台整理文字记录，不执行排盘或推断。
+            内容不上传。记录保存在当前应用或浏览器的工作区；换入口前请导出。导入先载入草稿，检查后再保存。此处整理文字记录，不执行排盘或推断。
           </p>
         </section>
-      </main>
-      <ProductFooter name="Ordarc" description="个人记录工作台">
-        <a href="#help">使用说明</a>
-      </ProductFooter>
+          </main>
+        </div>
+      </div>
     </>
   );
 }
