@@ -3,10 +3,10 @@
   "product": "Ordarc experience shell",
   "scope": "presentation-only",
   "license": "MIT",
-  "sourceCommit": "d229250cd4b7ec22f56c05773bd261075da1b35e",
+  "sourceCommit": "1159067e7412f94bf4e3b0940caba3d3e1d9d6a4",
   "includesWorkingTreeChanges": false,
   "manifestSelfExcluded": true,
-  "sourceTreeSha256": "928ef3eef47770439b07acc6afcfa3b68608416f9bbe8d664810b3760554609b",
+  "sourceTreeSha256": "524db5e35832090f2c1d953ea910a9eda02dbfd23eee32419de75ac652df2f02",
   "files": [
     {
       "path": ".github/workflows/check.yml",
@@ -75,8 +75,8 @@
     },
     {
       "path": "desktop/tests/BackendTests.swift",
-      "bytes": 4753,
-      "sha256": "d597a9bcb26d9a0cb8d29992c66a61a956369ce2e7872d64060e527d722d0296"
+      "bytes": 4793,
+      "sha256": "283c9facac6049627e0ae901968e33dbcb3358db725bc5d255ae6c7d2cd5c9c4"
     },
     {
       "path": "desktop/tests/ServerTests.swift",
@@ -85,8 +85,13 @@
     },
     {
       "path": "desktop/tests/backend_fixture.py",
-      "bytes": 1078,
-      "sha256": "0c78b12151a15fa5724b0803e312f001c367bea1ef70f94ed114e50d6c9c0d14"
+      "bytes": 2658,
+      "sha256": "79aeebf4e018f07af2ec6d2a81257384e6afc1b60e223d4e9bc472a709af86f7"
+    },
+    {
+      "path": "desktop/tests/test_fixture_paths.py",
+      "bytes": 3220,
+      "sha256": "7acc70055f5954a5cc779dad631c4f1c7f1d84f73b9dec562a87d88dc2c3817d"
     },
     {
       "path": "docs/PRODUCT_EXPERIENCE.md",
@@ -120,8 +125,8 @@
     },
     {
       "path": "scripts/provenance.mjs",
-      "bytes": 4444,
-      "sha256": "44034d5871e9c61a0bc77c6d25804333864fb93fa1b8bed702cc58fa72a5455b"
+      "bytes": 4482,
+      "sha256": "aa3944b2be74a3badc98a5258caa79de253097a5295de6f8d16ba63345ed8ff2"
     },
     {
       "path": "scripts/test-summary.mjs",
