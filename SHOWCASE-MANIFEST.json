@@ -3,10 +3,10 @@
   "product": "Ordarc experience shell",
   "scope": "presentation-only",
   "license": "MIT",
-  "sourceCommit": "dd83cc6e71323ad9e95cae1253dbd9d5744bdd4e",
+  "sourceCommit": "89e16e0595b4360c74bf6f76e2e0b0097f38f87d",
   "includesWorkingTreeChanges": false,
   "manifestSelfExcluded": true,
-  "sourceTreeSha256": "69c41a48f7db115d7a219c8fedf7141742f9e3628f978806e07951e3325f3fd1",
+  "sourceTreeSha256": "b5726d0020424e1b70eb8c121381cddcbc20beaa19fc115961bbc0321d2f86a5",
   "files": [
     {
       "path": ".github/workflows/check.yml",
@@ -35,8 +35,8 @@
     },
     {
       "path": "demo.css",
-      "bytes": 9483,
-      "sha256": "ad0def3ac7c310070afe58330ef196283c9b44b9786c9ed3d1259c1cebf128cb"
+      "bytes": 12020,
+      "sha256": "e25d75195f402d2b0e4b34a857c7a9b182471b4a73e585904967ee8f51caa0e3"
     },
     {
       "path": "demo.tsx",
@@ -70,8 +70,8 @@
     },
     {
       "path": "desktop/main.swift",
-      "bytes": 19614,
-      "sha256": "0561346466c29b4ef186846dfea01f2b810a5924edf46e76188c9e24b7b2b98b"
+      "bytes": 19616,
+      "sha256": "a52a464d44be46fa514986fe0503fe7b504a2d7316bed96fb6eecd4b21c1c97b"
     },
     {
       "path": "desktop/tests/BackendTests.swift",
