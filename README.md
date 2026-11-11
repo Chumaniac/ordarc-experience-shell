@@ -1,8 +1,33 @@
-# Ordarc experience shell
+<img src="src/ordarc.svg" width="56" height="56" alt="" />
 
-Presentation components and a standalone interface example. This package contains no calculation engines, user records, datasets, model prompts, credentials or business API clients. The example makes no network requests to an application service.
+# Ordarc
 
-Install the development dependencies, then run `npm run build` or `npm run dev`. The components accept presentation slots rather than importing product logic. React is a peer dependency; `react-dom` and Vite are used only by the example.
+[![Build](https://github.com/Chumaniac/ordarc-experience-shell/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/Chumaniac/ordarc-experience-shell/actions/workflows/check.yml) [![License](https://img.shields.io/badge/license-MIT-555)](LICENSE)
+
+在浏览器整理研习笔记，保留版本并导出自己的记录。
+
+[打开记录工作台](https://chumaniac.github.io/ordarc-experience-shell/) · [进入 Ordarc 命盘与研习工作台](https://chumanic.com/)
+
+## 快速开始
+
+```sh
+git clone https://github.com/Chumaniac/ordarc-experience-shell.git
+cd ordarc-experience-shell
+npm ci
+npm run dev
+```
+
+使用 Node 20.19+ 或 22.12+，打开终端显示的本机地址。展示程序无需账号或环境变量。
+
+## 可以做什么
+
+- 新建带标题、栏目和正文的研习记录，保存并查看此前的修改。
+- 在当前浏览器搜索记录，导入导出 JSON 或导出文本摘要。
+- 在 React 项目中复用页头、导航、卡片与页脚组件。
+
+**清除浏览器数据后可以找回记录吗？** 请先导出备份。公开展示没有云端账户，也不包含命盘计算服务。
+
+## 组件与许可
 
 MIT applies only to this independently authored package. It does not relicense the Ordarc application, its calculation engines, upstream materials or product trademarks. Dependency notices retain their own effect.
 
