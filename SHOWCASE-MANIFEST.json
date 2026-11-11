@@ -3,15 +3,20 @@
   "product": "Ordarc experience shell",
   "scope": "presentation-only",
   "license": "MIT",
-  "sourceCommit": "89e16e0595b4360c74bf6f76e2e0b0097f38f87d",
+  "sourceCommit": "41bd7fabafa55730101ba366c25a2e77f9d0a485",
   "includesWorkingTreeChanges": false,
   "manifestSelfExcluded": true,
-  "sourceTreeSha256": "b5726d0020424e1b70eb8c121381cddcbc20beaa19fc115961bbc0321d2f86a5",
+  "sourceTreeSha256": "8a76b9d553656ba2d66026efb00876b9fda177aa0f80bb5d4c33d0c0682da0ea",
   "files": [
     {
       "path": ".github/workflows/check.yml",
       "bytes": 623,
       "sha256": "58fc093c627b61e14255931812b8f765fd0586cb5664529e4bf01366254039ad"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "bytes": 1146,
+      "sha256": "506774e31fca4548b9187498f9d7398c1f6e22719623dbe4891b320c5e005b54"
     },
     {
       "path": ".gitignore",
@@ -25,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7787,
-      "sha256": "14b6ca8a597c3cb23df7e071f5b2742919e151bf137d29e97f6e9a0b3f802bf2"
+      "bytes": 8500,
+      "sha256": "c9e675d17c86d8866a15608be413a451c210e54cfc51d683ee911675974cd638"
     },
     {
       "path": "demo-summary.ts",
@@ -40,8 +45,8 @@
     },
     {
       "path": "demo.tsx",
-      "bytes": 15929,
-      "sha256": "4d83a1071c864c1e8cee14367cc21b034b3666df502f503512864c490265c74e"
+      "bytes": 16242,
+      "sha256": "801e3f36d7c6417a6bbf6c74fe742100b3bd22b39250892cb29eb55b7dd8cd81"
     },
     {
       "path": "desktop/BackendRuntime.swift",
@@ -110,8 +115,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 307,
-      "sha256": "5741a3b4cf6430fbf4ca11c0b6ea8d5b117c2c966020f9bd613d6040a90ca57e"
+      "bytes": 474,
+      "sha256": "9d7af6ba99baeaf88ebf6af661216f8eeb86b9420d4efcde9c7d512f9f854c1d"
     },
     {
       "path": "package-lock.json",
@@ -125,8 +130,8 @@
     },
     {
       "path": "scripts/provenance.mjs",
-      "bytes": 4482,
-      "sha256": "aa3944b2be74a3badc98a5258caa79de253097a5295de6f8d16ba63345ed8ff2"
+      "bytes": 4529,
+      "sha256": "454a0a7ff0b2a34f3fb67fdd54a62d0e6773258fe5b1a62338b7ca49cda51e98"
     },
     {
       "path": "scripts/test-summary.mjs",
@@ -142,6 +147,11 @@
       "path": "src/index.tsx",
       "bytes": 5054,
       "sha256": "945b765087c47208b1d3828135ad534d8e339bef0ffd4e30e83d61dd5e23ad85"
+    },
+    {
+      "path": "src/ordarc.svg",
+      "bytes": 350,
+      "sha256": "57ccee909100492aae6d32488b6618a4bf681d1f6456d907a85c39d3fc25f99d"
     },
     {
       "path": "src/styles.css",
