@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./src/styles.css";
 import "./demo.css";
@@ -13,6 +13,8 @@ type Note = {
   versions: Array<{ notes: string; at: string }>;
 };
 const key = "ordarc.notes.v1";
+// One note may contain 11 × 20,000 UTF-16 units, plus its summary and JSON escapes.
+const maxImportBytes = 2 * 1024 * 1024;
 const blank = (): Note => ({
   id: crypto.randomUUID(),
   title: "",
@@ -49,7 +51,7 @@ function valid(v: unknown): v is Note {
 function read(): { items: Note[]; error: string } {
   try {
     const raw = localStorage.getItem(key);
-    if (!raw) return { items: [], error: "" };
+    if (raw === null) return { items: [], error: "" };
     if (raw.length > 5000000) throw Error();
     const d = JSON.parse(raw);
     if (
@@ -80,7 +82,7 @@ function download(content: string, name: string, type: string) {
 function Demo() {
   const [initial] = useState(read),
     [items, setItems] = useState(initial.items),
-    [draft, setDraft] = useState<Note>(blank),
+    [draft, commitDraft] = useState<Note>(blank),
     [dirty, setDirty] = useState(false),
     [message, setMessage] = useState(initial.error),
     [query, setQuery] = useState(""),
@@ -102,6 +104,11 @@ function Demo() {
     window.addEventListener("beforeunload", warn);
     return () => window.removeEventListener("beforeunload", warn);
   }, [dirty]);
+  const importGeneration = useRef(0);
+  function setDraft(next: Note) {
+    importGeneration.current++;
+    commitDraft(next);
+  }
   const summary = summarizeNote(draft.notes);
   const canLeave = () =>
     !dirty || window.confirm("当前编辑尚未保存，放弃这些修改？");
@@ -166,19 +173,24 @@ function Demo() {
     return () => window.removeEventListener("keydown", handleSave);
   });
   async function importNote(file?: File) {
+    const generation = ++importGeneration.current;
     try {
       if (!file) return;
-      if (file.size > 500000) throw Error("请选择不超过500 KB的记录文件。");
-      const d = JSON.parse(await file.text());
+      if (file.size > maxImportBytes) throw Error("请选择不超过 2 MiB的记录文件。");
+      const text = await file.text();
+      if (generation !== importGeneration.current) return;
+      const d = JSON.parse(text);
       if (d.version !== 1 || !valid(d.note))
         throw Error("记录文件格式不正确。");
       if (canLeave()) {
-        setDraft({ ...d.note, id: crypto.randomUUID() });
+        const n = d.note;
+        setDraft({id: crypto.randomUUID(), title: n.title, kind: n.kind, notes: n.notes,
+          at: new Date(n.at).toISOString(), versions: n.versions.map(v => ({notes:v.notes, at:new Date(v.at).toISOString()}))});
         setDirty(true);
         setMessage("已载入导入草稿，检查后保存。");
       }
     } catch (e) {
-      setMessage(e instanceof Error ? e.message : "导入失败。");
+      if (generation === importGeneration.current) setMessage(e instanceof Error ? e.message : "导入失败。");
     }
   }
   return (
@@ -353,7 +365,7 @@ function Demo() {
               {items.some((n) => n.id === draft.id) ? (
                 <button
                   onClick={() => {
-                    if (window.confirm("删除这条本机记录？建议先导出备份。")) {
+                    if (window.confirm(dirty ? "删除这条本机记录并放弃未保存的编辑？" : "删除这条本机记录？建议先导出备份。")) {
                       try {
                         persist(items.filter((n) => n.id !== draft.id));
                         setDraft(blank());
