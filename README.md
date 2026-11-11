@@ -27,6 +27,8 @@ npm run dev
 
 **清除浏览器数据后可以找回记录吗？** 请先导出备份。公开展示没有云端账户，也不包含命盘计算服务。
 
+**旧版记录能否导入？** 工作台读取 `ordarc.notes.v1`，支持单条记录 JSON 的 `version: 1` 格式，最多包含最近十次正文版本。导入会新建草稿，确认后再保存。正式产品的整库备份采用独立格式，请在原产品中恢复。
+
 ## 组件与许可
 
 MIT applies only to this independently authored package. It does not relicense the Ordarc application, its calculation engines, upstream materials or product trademarks. Dependency notices retain their own effect.
