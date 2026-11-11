@@ -176,14 +176,14 @@ function Demo() {
     const generation = ++importGeneration.current;
     try {
       if (!file) return;
-      if (file.size > maxImportBytes) throw Error("请选择不超过 2 MiB的记录文件。");
+      if (file.size > maxImportBytes) throw Error("请选择不超过 2 MiB 的记录文件。");
       const text = await file.text();
       if (generation !== importGeneration.current) return;
       const d = JSON.parse(text);
       if (d.version !== 1 || !valid(d.note))
         throw Error("记录文件格式不正确。");
       if (canLeave()) {
-        const n = d.note;
+        const n: Note = d.note;
         setDraft({id: crypto.randomUUID(), title: n.title, kind: n.kind, notes: n.notes,
           at: new Date(n.at).toISOString(), versions: n.versions.map(v => ({notes:v.notes, at:new Date(v.at).toISOString()}))});
         setDirty(true);
