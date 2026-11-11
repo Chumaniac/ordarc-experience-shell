@@ -29,6 +29,8 @@ npm run dev
 
 **旧版记录能否导入？** 工作台读取 `ordarc.notes.v1`，支持单条记录 JSON 的 `version: 1` 格式，最多包含最近十次正文版本。导入会新建草稿，确认后再保存。正式产品的整库备份采用独立格式，请在原产品中恢复。
 
+展开旧版本后可比较两份完整正文，从首处差异到末处差异标出变更区段。「载入为草稿」后仍可编辑，保存时会留下此前的正文版本。
+
 ## 组件与许可
 
 MIT applies only to this independently authored package. It does not relicense the Ordarc application, its calculation engines, upstream materials or product trademarks. Dependency notices retain their own effect.
