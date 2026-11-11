@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./src/styles.css";
 import "./demo.css";
+const brandMark = new URL("./src/ordarc.svg", import.meta.url).href;
 import { summarizeNote } from "./demo-summary";
 type Note = {
   id: string;
@@ -117,6 +118,10 @@ function Demo() {
   };
   const persist = (next: Note[]) => {
     if (initial.error) throw Error(initial.error);
+    const current = read();
+    if (current.error) throw Error(current.error);
+    if (JSON.stringify(current.items) !== JSON.stringify(items))
+      throw Error("记录已在其他页面更改。请先导出当前草稿，再刷新页面。");
     const data = JSON.stringify({ version: 1, items: next });
     if (data.length > 5000000)
       throw Error("记录存储已达上限，请先导出并整理旧版本。");
@@ -183,7 +188,7 @@ function Demo() {
       </a>
       <div className="workspace-shell">
           <aside id="records" className="notes-list app-sidebar" aria-label="本机记录">
-            <a className="app-brand" href="#content"><span className="app-mark" aria-hidden="true">O</span><strong>Ordarc</strong></a>
+            <a className="app-brand" href="#content"><img src={brandMark} width="32" height="32" alt="" /><strong>Ordarc</strong></a>
             <p className="sidebar-label">工作区</p>
             <div className="actions sidebar-actions">
               <button
