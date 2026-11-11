@@ -142,3 +142,11 @@ button.primary{background:#356c55;border-color:#356c55;box-shadow:0 3px 8px #356
 .structured-note{border-top:0;padding-top:4px}.structured-note>h3{color:#285341}.structured-note article{background:#f0f6ec;border-color:var(--tool-line);border-radius:11px}.structured-note article h4{color:#356c55}.note-preview{background:#f8fbf5;border:1px solid var(--tool-line);border-radius:10px;padding:18px}
 .revision{background:#fbfdf9;padding:18px;border:1px solid var(--tool-line);border-radius:10px;margin-bottom:10px}.revision>span{color:#607263}.help{border-color:var(--tool-line)}.help h2{color:#356c55}
 @media(max-width:720px){.note-editor{padding:18px}.editor-heading{gap:12px}.editor-heading h1{padding-left:10px}.workspace-status{font-size:11px}}
+
+.version-comparison { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; grid-column:1/-1; width:100%; }
+.version-comparison section { min-width:0; }
+.version-comparison h4 { margin:.6rem 0 .25rem; }
+.version-comparison pre { white-space:pre-wrap; overflow-wrap:anywhere; max-height:20rem; overflow:auto; font:inherit; margin:0; }
+.version-comparison del { background:#f9e4db; color:#612f24; }
+.version-comparison ins { background:#e1eddf; color:#234831; }
+@media (max-width:720px) { .version-comparison {grid-template-columns:1fr;} }

@@ -79,7 +79,23 @@ function download(content: string, name: string, type: string) {
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+function VersionComparison({ previous, current }: { previous: string; current: string }) {
+  if (previous === current) return <p className="version-comparison">两份正文相同。</p>;
+  const oldChars = Array.from(previous), newChars = Array.from(current);
+  const limit = Math.min(oldChars.length, newChars.length);
+  let start = 0, tail = 0;
+  while (start < limit && oldChars[start] === newChars[start]) start++;
+  while (tail < limit - start && oldChars[oldChars.length-1-tail] === newChars[newChars.length-1-tail]) tail++;
+  const prefix = oldChars.slice(0,start).join("");
+  const suffix = oldChars.slice(oldChars.length-tail).join("");
+  return <div className="version-comparison">
+    <section><h4>旧版本</h4><pre>{prefix}<del>{oldChars.slice(start,oldChars.length-tail).join("")}</del>{suffix}</pre></section>
+    <section><h4>当前草稿</h4><pre>{prefix}<ins>{newChars.slice(start,newChars.length-tail).join("")}</ins>{suffix}</pre></section>
+  </div>;
+}
+
 function Demo() {
+  const [compared, setCompared] = useState<Note["versions"][number] | null>(null);
   const [initial] = useState(read),
     [items, setItems] = useState(initial.items),
     [draft, commitDraft] = useState<Note>(blank),
@@ -439,7 +455,11 @@ function Demo() {
                     >
                       载入为草稿
                     </button>
-                    <p>{r.notes.slice(0, 120)}</p>
+                    <button type="button" aria-expanded={compared === r}
+                      onClick={() => setCompared(compared === r ? null : r)}>
+                      {compared === r ? "收起对比" : "比较完整正文"}
+                    </button>
+                    {compared === r ? <VersionComparison previous={r.notes} current={draft.notes} /> : <p>{r.notes.slice(0, 120)}</p>}
                   </div>
                 ))
               ) : (
