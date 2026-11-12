@@ -84,3 +84,12 @@ export function ProductFooter({ name, description, children, navigationLabel = '
 export function ServiceCard({ title, description, children, headingAs: Heading = 'h2' }: { title: string; description: string; children?: ReactNode; headingAs?: 'h2' | 'h3' | 'h4' }) {
   return <article className="service-card"><Heading>{title}</Heading><p>{description}</p>{children}</article>;
 }
+
+
+/** Client render fallback only. Callers own persistence and async error handling. */
+export class ProductBoundary extends React.Component<{ children: ReactNode; fallback: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  componentDidCatch() { /* Never forward product data or errors to a telemetry sink. */ }
+  render() { return this.state.failed ? this.props.fallback : this.props.children; }
+}
