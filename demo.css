@@ -37,7 +37,6 @@ button.primary { color: #fff; }
   padding: 24px 14px 16px; border-right: 1px solid var(--tool-line);
 }
 .app-brand { display: flex; align-items: center; gap: 10px; padding: 0 9px 12px; font-size: 15px; letter-spacing: -.02em; }
-.app-mark { display: grid; place-items: center; border: 1px solid #cecec8; border-radius: 8px; font-size: 15px; font-weight: 600; }
 .sidebar-label { margin: 0; padding: 0 10px; font-size: 12px; }
 .app-sidebar label { display: grid; gap: 7px; color: var(--tool-muted); font-size: 12px; padding: 0 6px; }
 .app-sidebar input { min-width: 0; border-color: transparent; }
@@ -119,7 +118,7 @@ summary { cursor: pointer; color: #5f5f59; min-height: 28px; }
 
 /* Ordarc · pine notebook. The record stays central; color clarifies location and actions. */
 :root{--tool-bg:#f7faf5;--tool-sidebar:#edf4ec;--tool-panel:#f1f7ee;--tool-ink:#29392e;--tool-muted:#607263;--tool-line:#d9e5d8;--tool-hover:#e1eddf;--tool-focus:#356c55;--tool-accent:#356c55;--demo-accent:#356c55}
-.app-sidebar{background:var(--tool-sidebar);border-color:var(--tool-line)}.app-mark{width:32px;height:32px;background:#356c55;color:#fff;border-color:#356c55;box-shadow:0 3px 8px #356c5520}.sidebar-label{color:#356c55;font-weight:550}.app-sidebar input{background:#fffdfb;border:1px solid #ccdccc}
+.app-sidebar{background:var(--tool-sidebar);border-color:var(--tool-line)}.sidebar-label{color:#356c55;font-weight:550}.app-sidebar input{background:#fffdfb;border:1px solid #ccdccc}
 .sidebar-actions button:first-child{background:#fffdfb;border-color:var(--tool-line);color:#285341}.sidebar-actions button:hover{background:#dcecdf}.record-item:hover{background:#e1eddf}.record-item.selected{background:#d4e6d5;color:#285341;box-shadow:inset 3px 0 #356c55}
 .workspace-bar{background:#fffdfb;border-color:var(--tool-line)}.workspace-status{color:#356c55;background:#e9f2e6;border-radius:20px;padding:4px 10px}.workspace-status i{background:#356c55}
 .note-editor{background:#fffdfb;border:1px solid var(--tool-line)}.editor-heading{padding-bottom:20px;border-bottom:1px solid var(--tool-line);margin:0}.editor-heading h1{color:#285341;padding-left:14px}
