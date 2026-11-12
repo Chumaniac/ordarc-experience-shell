@@ -103,7 +103,8 @@ function Demo() {
     [message, setMessage] = useState(initial.error),
     [query, setQuery] = useState(""),
     [compact, setCompact] = useState(false),
-    [recordsExpanded, setRecordsExpanded] = useState(false);
+    [recordsExpanded, setRecordsExpanded] = useState(false),
+    [inspectorExpanded, setInspectorExpanded] = useState(false);
   useEffect(() => {
     const media = window.matchMedia("(max-width: 720px)");
     const update = () => setCompact(media.matches);
@@ -137,6 +138,8 @@ function Demo() {
       setDraft(structuredClone(n));
       setDirty(false);
       setMessage("已打开本机记录。");
+      setRecordsExpanded(false);
+      requestAnimationFrame(() => document.getElementById("record-title")?.focus());
     }
   };
   const persist = (next: Note[]) => {
@@ -274,6 +277,7 @@ function Demo() {
                   </small>
                 </button>
               ))}
+            {items.length > 0 && !items.some(n => (n.title + n.kind).includes(query)) ? <p className="muted">没有匹配的记录，请换个词或清空搜索。</p> : null}
             {!items.length ? (
               <p className="muted">还没有记录。从示例或一条新记录开始。</p>
             ) : null}
@@ -285,9 +289,9 @@ function Demo() {
           <header className="workspace-bar"><span>个人记录</span><span className="workspace-status"><i aria-hidden="true" />本机工作区</span></header>
           <main id="content" tabIndex={-1}>
 
-          <section className="note-editor" aria-label="编辑记录">
+          <div className="note-desk"><section className="note-editor" aria-label="编辑记录">
             <div className="editor-heading">
-              <h1>{draft.title || "新记录"}</h1>
+              <h1 id="record-title" tabIndex={-1}>{draft.title || "新记录"}</h1>
               <span>{dirty ? "尚未保存" : items.some((item) => item.id === draft.id) ? "已保存" : "新建"}</span>
             </div>
             <div className="note-meta">
@@ -327,7 +331,7 @@ function Demo() {
             <p className="muted" id="note-length">
               {draft.notes.length.toLocaleString()} / 20,000 字符
             </p>
-            <div className="actions">
+            <div className="actions editor-save-actions">
               <button
                 className="primary"
                 data-desktop-save="record"
@@ -398,7 +402,7 @@ function Demo() {
               ) : null}
             </div>
             <p role="status">{message}</p>
-            <section className="structured-note" aria-label="结构化记录">
+            </section><div className="inspector-wrap"><button className="inspector-toggle" aria-label="摘要、预览与旧版本" aria-expanded={inspectorExpanded} aria-controls="note-inspector" type="button" onClick={() => setInspectorExpanded(!inspectorExpanded)}>摘要、预览与旧版本</button><aside id="note-inspector" className="note-inspector" hidden={compact && !inspectorExpanded} aria-label="记录依据与版本"><section className="structured-note" aria-label="结构化记录">
               <h3>记录摘要</h3>
               <p className="muted">
                 按正文中的“材料、观察、下一步”分组，编辑正文后同步更新。
@@ -466,7 +470,7 @@ function Demo() {
                 <p>首次保存后，再修改正文即可保留旧版本。</p>
               )}
             </details>
-          </section>
+          </aside></div></div>
         <section id="help" className="help">
           <h2>使用说明</h2>
           <p>
