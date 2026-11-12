@@ -133,6 +133,16 @@ function Demo() {
     setDraft({ ...draft, ...patch });
     setDirty(true);
   };
+  function loadExample() {
+    if (!canLeave()) return;
+    setDraft({ ...blank(), title: "一次阅读记录", notes: "材料：一篇关于时间安排的文章\n\n观察：上午适合处理需要连续思考的事。\n\n下一步：下周留出两段不安排会议的时间。" });
+    setDirty(true);
+    requestAnimationFrame(() => document.getElementById('record-title')?.focus());
+  }
+  function showInspector() {
+    setInspectorExpanded(true);
+    requestAnimationFrame(() => { const heading = document.getElementById('note-summary-heading'); heading?.focus(); heading?.scrollIntoView({ block: 'center' }); });
+  }
   const open = (n: Note) => {
     if (canLeave()) {
       setDraft(structuredClone(n));
@@ -232,21 +242,7 @@ function Demo() {
               >
                 新建记录
               </button>
-              <button
-                onClick={() => {
-                  if (canLeave()) {
-                    setDraft({
-                      ...blank(),
-                      title: "一次阅读记录",
-                      notes:
-                        "材料：一篇关于时间安排的文章\n\n观察：上午适合处理需要连续思考的事。\n\n下一步：下周留出两段不安排会议的时间。",
-                    });
-                    setDirty(true);
-                  }
-                }}
-              >
-                填入示例
-              </button>
+              <button onClick={loadExample}>填入示例</button>
             </div>
             <button className="records-toggle" type="button" hidden={!compact} aria-expanded={recordsExpanded} aria-controls="record-browser" onClick={() => setRecordsExpanded(!recordsExpanded)}>记录与搜索（{items.length}）</button>
             <div id="record-browser" className="record-browser" hidden={compact && !recordsExpanded}>
@@ -289,6 +285,8 @@ function Demo() {
           <header className="workspace-bar"><span>个人记录</span><span className="workspace-status"><i aria-hidden="true" />本机工作区</span></header>
           <main id="content" tabIndex={-1}>
 
+          <section className="note-purpose" aria-label="Ordarc 文字体验用途"><p><strong>把资料、观察和下一步留在同一份记录里。</strong>适合阅读、研习或回看一个具体问题。准备一段文字，得到本机记录、按标题分组的摘要和可对照的旧版本；无需账号，内容不上传。</p><p>这是 Ordarc 的文字整理体验。正式工作台另有命盘、问事与专业研习；此页不排盘、不推断，也不调用模型。</p></section>
+          <details className="note-start-guide"><summary>第一次记录：从一份阅读示例开始</summary><ol><li><strong>先看一份完整输入</strong><p>示例把“材料、观察、下一步”分别写成段落。换成自己的内容前，可先看看它们怎样进入摘要。</p><button type="button" onClick={loadExample}>从阅读记录示例开始</button></li><li><strong>修改并保存</strong><p>填写标题与正文，再保存到当前浏览器。后续修改正文再保存，会保留被替换的版本。</p><button type="button" disabled={!dirty || !!initial.error} onClick={() => { save(); requestAnimationFrame(() => document.getElementById('note-status')?.focus()); }}>保存当前草稿</button></li><li><strong>回看依据或导出</strong><p>展开摘要、预览与旧版本。换设备或清理浏览器数据前，用 JSON 或 Markdown 带走自己的副本。</p><button type="button" onClick={showInspector}>查看摘要与旧版本</button></li></ol></details>
           <div className="note-desk"><section className="note-editor" aria-label="编辑记录">
             <div className="editor-heading">
               <h1 id="record-title" tabIndex={-1}>{draft.title || "新记录"}</h1>
@@ -401,9 +399,9 @@ function Demo() {
                 </button>
               ) : null}
             </div>
-            <p role="status">{message}</p>
+            <p id="note-status" tabIndex={-1} role="status">{message}</p>
             </section><div className="inspector-wrap"><button className="inspector-toggle" aria-label="摘要、预览与旧版本" aria-expanded={inspectorExpanded} aria-controls="note-inspector" type="button" onClick={() => setInspectorExpanded(!inspectorExpanded)}>摘要、预览与旧版本</button><aside id="note-inspector" className="note-inspector" hidden={compact && !inspectorExpanded} aria-label="记录依据与版本"><section className="structured-note" aria-label="结构化记录">
-              <h3>记录摘要</h3>
+              <h3 id="note-summary-heading" tabIndex={-1}>记录摘要</h3>
               <p className="muted">
                 按正文中的“材料、观察、下一步”分组，编辑正文后同步更新。
               </p>

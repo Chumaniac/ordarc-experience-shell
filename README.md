@@ -8,6 +8,9 @@
 
 [打开记录工作台](https://chumaniac.github.io/ordarc-experience-shell/) · [进入 Ordarc 命盘与研习工作台](https://chumanic.com/)
 
+
+页内“第一次记录”可载入阅读示例、保存当前草稿或展开摘要与旧版本。示例替换仍会确认未保存修改；清除网站数据前请导出自己的副本。
+
 ## 快速开始
 
 ```sh
