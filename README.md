@@ -147,3 +147,9 @@ they do not replace an independent assistive-technology review.
 ## macOS application
 
 The record workspace now uses a quiet sidebar and a compact content area. Build its independent window application using [desktop/README.md](desktop/README.md); existing browser records remain in their original storage and can be moved through the existing JSON export/import flow. No astrology computation or external model service is added.
+
+## 渲染兜底与源码归属
+
+`ProductBoundary`要求调用者提供可读的`fallback`，仅处理客户端渲染异常；不处理请求/事件/SSR错误，也不替代草稿持久化。笔记展示页提供明确的重新载入确认，不自动清空记录或刷新。
+
+纯组件与样式以此仓`src/index.tsx`和`src/styles.css`为权威来源。其他产品按明确提交和哈希固定一份输入，更新时同时检查consumer、类型与来源清单；不从运行中私有服务下载未固定代码。本包不携带正式产品数据、计算、账号或付费服务。

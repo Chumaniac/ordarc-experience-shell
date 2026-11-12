@@ -1,3 +1,4 @@
+import { ProductBoundary } from "./src/index";
 import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./src/styles.css";
@@ -481,4 +482,6 @@ function Demo() {
     </>
   );
 }
-createRoot(document.getElementById("root")!).render(<Demo />);
+createRoot(document.getElementById("root")!).render(
+  <ProductBoundary fallback={<main className="recovery-panel" role="alert"><h1>页面未能显示</h1><p>已保存的浏览器记录仍保留。重新载入可能丢失未保存的编辑；请先保留当前标签页，再决定是否继续。</p><button type="button" onClick={() => { if (window.confirm('重新载入页面？未保存的编辑可能丢失。')) window.location.reload(); }}>重新载入</button></main>}><Demo /></ProductBoundary>,
+);
