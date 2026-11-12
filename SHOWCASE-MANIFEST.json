@@ -3,10 +3,10 @@
   "product": "Ordarc experience shell",
   "scope": "presentation-only",
   "license": "MIT",
-  "sourceCommit": "30caab42308254e01f2687a51077b7bfba8cb0c8",
+  "sourceCommit": "e6ec0ee7b1b4d036ae6422cec7beb5baa4559f90",
   "includesWorkingTreeChanges": false,
   "manifestSelfExcluded": true,
-  "sourceTreeSha256": "fc47435816cb5e2de8945dfd72d3b74c0ae1f7a803a02ff27a8a748d7c1d44af",
+  "sourceTreeSha256": "3230091e0dea593152a9783b9b10d765fda2946d9cc8015fad5025512f7e73b7",
   "files": [
     {
       "path": ".github/workflows/check.yml",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9153,
-      "sha256": "55efa97f8e719d7d64fe7f8cb3d12e4fb102508a2d98d76ff6a1ea5a64211022"
+      "bytes": 9743,
+      "sha256": "1cde99125005d30dfd4ba611e59a8e00153a75639030050c2b442c5144bc9285"
     },
     {
       "path": "demo-summary.ts",
@@ -40,13 +40,13 @@
     },
     {
       "path": "demo.css",
-      "bytes": 15086,
-      "sha256": "7969862ae1b55733e4170b6f38abd93494fa2dc5e8d5d651e21a383553688361"
+      "bytes": 15316,
+      "sha256": "fc37278c16aa6a343bd5b2f0aa5810cb3496a93d69f24f02d7185013ead0df9e"
     },
     {
       "path": "demo.tsx",
-      "bytes": 20913,
-      "sha256": "424a3500f10d9216c09aac501c841f8f913e0a87383a31840acc8f2422cb656d"
+      "bytes": 21404,
+      "sha256": "059be10571c2825596e0809b34a5d6b7798d3cd5347d0023acf8e1ceb755899a"
     },
     {
       "path": "desktop/BackendRuntime.swift",
@@ -110,8 +110,8 @@
     },
     {
       "path": "examples/consumer.tsx",
-      "bytes": 1259,
-      "sha256": "4ab95e6edd93ed64f247d92bdfcf91913d160566544575911647f5bf3a060b6c"
+      "bytes": 1374,
+      "sha256": "5f46585570998a79993fb85b3a8bf9ec6a2b0383ea3c230387846b620f6eb3b5"
     },
     {
       "path": "index.html",
@@ -145,8 +145,8 @@
     },
     {
       "path": "src/index.tsx",
-      "bytes": 5054,
-      "sha256": "945b765087c47208b1d3828135ad534d8e339bef0ffd4e30e83d61dd5e23ad85"
+      "bytes": 5535,
+      "sha256": "7c93d2de9aa5601be36807cb952c2950b006fb061b8064ff75ac1c756c920c95"
     },
     {
       "path": "src/ordarc.svg",
