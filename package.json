@@ -17,7 +17,8 @@
     "tsconfig.json",
     "README.md",
     "LICENSE",
-    "demo-summary.ts"
+    "demo-summary.ts",
+    "docs/preview/online.png"
   ],
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 18872 --strictPort",
