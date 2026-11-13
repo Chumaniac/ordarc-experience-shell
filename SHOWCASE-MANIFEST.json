@@ -3,10 +3,10 @@
   "product": "Ordarc experience shell",
   "scope": "presentation-only",
   "license": "MIT",
-  "sourceCommit": "e6ec0ee7b1b4d036ae6422cec7beb5baa4559f90",
+  "sourceCommit": "7f8628693b05369ee8615a7af3c4d04495c48c55",
   "includesWorkingTreeChanges": false,
   "manifestSelfExcluded": true,
-  "sourceTreeSha256": "3230091e0dea593152a9783b9b10d765fda2946d9cc8015fad5025512f7e73b7",
+  "sourceTreeSha256": "4150fdd27cc4016d9e98a041e92200fec7295c48503fd62ba51e2242e9b9dd28",
   "files": [
     {
       "path": ".github/workflows/check.yml",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9743,
-      "sha256": "1cde99125005d30dfd4ba611e59a8e00153a75639030050c2b442c5144bc9285"
+      "bytes": 10206,
+      "sha256": "fc6cc21d93f7bd2f99e4696a92b9d22d085dc1e0dc4f34d9887163836efdceb8"
     },
     {
       "path": "demo-summary.ts",
@@ -104,6 +104,11 @@
       "sha256": "67fafe7b36affccde29ace80bef79944bbd4964b2e0b427585798ac0063a6e11"
     },
     {
+      "path": "docs/preview/online.png",
+      "bytes": 122550,
+      "sha256": "c9e11ce71411745c41a13c7fec0fb5561622bc95baf0ad2751f9dd7c9f2ea52a"
+    },
+    {
       "path": "examples/consumer.html",
       "bytes": 191,
       "sha256": "871c46094773f2a2377b8d43bdab918ac10b3fc2b856f30fbda324329041ec8e"
@@ -130,8 +135,8 @@
     },
     {
       "path": "scripts/provenance.mjs",
-      "bytes": 4529,
-      "sha256": "454a0a7ff0b2a34f3fb67fdd54a62d0e6773258fe5b1a62338b7ca49cda51e98"
+      "bytes": 4555,
+      "sha256": "6c8c210b25a756bc74ed219b2b89c507e78c0ce49acaeb9046b4da1da77918db"
     },
     {
       "path": "scripts/test-summary.mjs",
