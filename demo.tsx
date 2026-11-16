@@ -123,8 +123,20 @@ function Demo() {
     return () => window.removeEventListener("beforeunload", warn);
   }, [dirty]);
   const importGeneration = useRef(0);
+  const [importing, setImporting] = useState(false);
+  const importPending = useRef(false);
+  useEffect(() => () => { importGeneration.current++; }, []);
+  function cancelImport() {
+    importGeneration.current++;
+    importPending.current = false;
+    setImporting(false);
+    setMessage("已取消导入，当前记录保持不变。");
+  }
   function setDraft(next: Note) {
     importGeneration.current++;
+    if (importPending.current) setMessage("当前内容已更新，已停止等待导入。");
+    importPending.current = false;
+    setImporting(false);
     commitDraft(next);
   }
   const summary = summarizeNote(draft.notes);
@@ -203,11 +215,17 @@ function Demo() {
     return () => window.removeEventListener("keydown", handleSave);
   });
   async function importNote(file?: File) {
+    if (!file || importPending.current) return;
     const generation = ++importGeneration.current;
+    importPending.current = true;
+    setImporting(true);
+    setMessage("正在读取导入文件；尚未替换当前记录。可取消或继续编辑。");
+    let timer: ReturnType<typeof setTimeout> | undefined;
     try {
-      if (!file) return;
       if (file.size > maxImportBytes) throw Error("请选择不超过 2 MiB 的记录文件。");
-      const text = await file.text();
+      const text = await Promise.race([file.text(), new Promise<never>((_, reject) => {
+        timer = setTimeout(() => reject(Error("读取文件超时，当前记录保持不变。请重选本机文件。")), 10000);
+      })]);
       if (generation !== importGeneration.current) return;
       const d = JSON.parse(text);
       if (d.version !== 1 || !valid(d.note))
@@ -218,9 +236,12 @@ function Demo() {
           at: new Date(n.at).toISOString(), versions: n.versions.map(v => ({notes:v.notes, at:new Date(v.at).toISOString()}))});
         setDirty(true);
         setMessage("已载入导入草稿，检查后保存。");
-      }
+      } else { setMessage("已保留当前草稿，未导入文件。"); }
     } catch (e) {
-      if (generation === importGeneration.current) setMessage(e instanceof Error ? e.message : "导入失败。");
+      if (generation === importGeneration.current) setMessage(e instanceof SyntaxError ? "文件不是有效的 JSON 记录，请重新导出或选择其他文件；当前记录保持不变。" : e instanceof Error ? e.message : "导入失败，请重选文件；当前记录保持不变。");
+    } finally {
+      clearTimeout(timer);
+      if (generation === importGeneration.current) { importPending.current = false; setImporting(false); }
     }
   }
   return (
@@ -375,12 +396,15 @@ function Demo() {
                 <input
                   type="file"
                   accept=".json,application/json"
+                  disabled={importing}
+                  aria-label="导入记录文件"
                   onChange={(e) => {
                     void importNote(e.target.files?.[0]);
                     e.target.value = "";
                   }}
                 />
               </label>
+              {importing ? <button type="button" onClick={cancelImport}>取消导入</button> : null}
               {items.some((n) => n.id === draft.id) ? (
                 <button
                   onClick={() => {
@@ -400,7 +424,7 @@ function Demo() {
                 </button>
               ) : null}
             </div>
-            <p id="note-status" tabIndex={-1} role="status">{message}</p>
+            <p id="note-status" tabIndex={-1} role="status" aria-busy={importing}>{message}</p>
             </section><div className="inspector-wrap"><button className="inspector-toggle" aria-label="摘要、预览与旧版本" aria-expanded={inspectorExpanded} aria-controls="note-inspector" type="button" onClick={() => setInspectorExpanded(!inspectorExpanded)}>摘要、预览与旧版本</button><aside id="note-inspector" className="note-inspector" hidden={compact && !inspectorExpanded} aria-label="记录依据与版本"><section className="structured-note" aria-label="结构化记录">
               <h3 id="note-summary-heading" tabIndex={-1}>记录摘要</h3>
               <p className="muted">
