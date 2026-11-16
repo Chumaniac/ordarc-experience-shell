@@ -18,6 +18,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
+          fetch-depth: 0
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
         with:
           node-version: '24'
@@ -62,6 +63,7 @@ jobs:
           for name in ['LICENSE','README.md']:
               p=Path(name);assert p.is_file() and not p.is_symlink() and p.stat().st_size<=1024**2
               payload[name]=p.read_bytes()
+          payload['RUN.md']='# Ordarc 文字记录\n\n解压后在此目录运行 python3 -m http.server 18872，然后打开 http://127.0.0.1:18872/。保存只写当前浏览器及端口的本机存储；更换设备、浏览器或端口前请先导出 JSON。此包仅整理文字，不提供账号、排盘、交易或模型。\n'.encode()
           archive=Path('release/ordarc-notes-browser.zip')
           with zipfile.ZipFile(archive,'x',compression=zipfile.ZIP_DEFLATED) as bundle:
               for name,data in sorted(payload.items()):
