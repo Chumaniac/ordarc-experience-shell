@@ -3,10 +3,10 @@
   "product": "Ordarc experience shell",
   "scope": "presentation-only",
   "license": "MIT",
-  "sourceCommit": "147df56973aaa47e7a56970d65e9380f6bf1fdc5",
+  "sourceCommit": "6cd04873427c1386095b8d4dceed122ade61e468",
   "includesWorkingTreeChanges": false,
   "manifestSelfExcluded": true,
-  "sourceTreeSha256": "7928c2d70770930f3553450dda40ce68bc5637a0d9d51624201eb6827f2075c3",
+  "sourceTreeSha256": "4f186c9c8652561c4fb89c59a7bdc39114a4fc771e10f76e717f9f69d7db324d",
   "files": [
     {
       "path": ".github/workflows/check.yml",
@@ -20,8 +20,8 @@
     },
     {
       "path": ".github/workflows/showcase-release.yml",
-      "bytes": 4871,
-      "sha256": "0a50f1eae6d8f59bca054eba87b5d2f2092ae3e21566cf4908f1e669fa5b946c"
+      "bytes": 5240,
+      "sha256": "41ec3b79592a4093c6589e101c8e76d21987c2df766dd111e0a262282f00d380"
     },
     {
       "path": ".gitignore",
