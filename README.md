@@ -159,3 +159,5 @@ The record workspace now uses a quiet sidebar and a compact content area. Build 
 `ProductBoundary`要求调用者提供可读的`fallback`，仅处理客户端渲染异常；不处理请求/事件/SSR错误，也不替代草稿持久化。笔记展示页提供明确的重新载入确认，不自动清空记录或刷新。
 
 纯组件与样式以此仓`src/index.tsx`和`src/styles.css`为权威来源。其他产品按明确提交和哈希固定一份输入，更新时同时检查consumer、类型与来源清单；不从运行中私有服务下载未固定代码。本包不携带正式产品数据、计算、账号或付费服务。
+
+导入 JSON 时会显示读取状态，可取消或继续编辑；晚到的文件不会覆盖新编辑。文件读取超过 10 秒会结束等待，导入成功也只进入未保存草稿。浏览器保存不等同云端备份，换设备前请导出 JSON。
