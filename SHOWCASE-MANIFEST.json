@@ -3,10 +3,10 @@
   "product": "Ordarc experience shell",
   "scope": "presentation-only",
   "license": "MIT",
-  "sourceCommit": "f23443ffacbae4cf3cf6b923c5f2e0d00f36cb5a",
+  "sourceCommit": "147df56973aaa47e7a56970d65e9380f6bf1fdc5",
   "includesWorkingTreeChanges": false,
   "manifestSelfExcluded": true,
-  "sourceTreeSha256": "5811e2bda8b136ac62a78687c13866a065a3427811ceac619262a0af53a9ed95",
+  "sourceTreeSha256": "7928c2d70770930f3553450dda40ce68bc5637a0d9d51624201eb6827f2075c3",
   "files": [
     {
       "path": ".github/workflows/check.yml",
@@ -17,6 +17,11 @@
       "path": ".github/workflows/pages.yml",
       "bytes": 1146,
       "sha256": "506774e31fca4548b9187498f9d7398c1f6e22719623dbe4891b320c5e005b54"
+    },
+    {
+      "path": ".github/workflows/showcase-release.yml",
+      "bytes": 4871,
+      "sha256": "0a50f1eae6d8f59bca054eba87b5d2f2092ae3e21566cf4908f1e669fa5b946c"
     },
     {
       "path": ".gitignore",
@@ -30,8 +35,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 10206,
-      "sha256": "fc6cc21d93f7bd2f99e4696a92b9d22d085dc1e0dc4f34d9887163836efdceb8"
+      "bytes": 10466,
+      "sha256": "be7e8c5de14bc0f15bf23e3ca681b826302cb2d2381e0449a0f397db51c427f6"
     },
     {
       "path": "demo-summary.ts",
@@ -40,13 +45,13 @@
     },
     {
       "path": "demo.css",
-      "bytes": 15316,
-      "sha256": "fc37278c16aa6a343bd5b2f0aa5810cb3496a93d69f24f02d7185013ead0df9e"
+      "bytes": 15431,
+      "sha256": "d2fb7b35f7b0be9bc35dbbce08237521786ba8827731dc687f53f88b594cbfdd"
     },
     {
       "path": "demo.tsx",
-      "bytes": 21404,
-      "sha256": "059be10571c2825596e0809b34a5d6b7798d3cd5347d0023acf8e1ceb755899a"
+      "bytes": 22945,
+      "sha256": "15a08d4d27acc44e5599b5cc19fc5deba27f7514c76b93c3d24b5874b9a76b86"
     },
     {
       "path": "desktop/BackendRuntime.swift",
@@ -126,17 +131,17 @@
     {
       "path": "package-lock.json",
       "bytes": 40805,
-      "sha256": "1933d06553c8fcb8aa60bd7eed952ace5afa509483d4021f5ba8a4b0cb048065"
+      "sha256": "9c40c1f6b0d4073eea349e07f9ea7e7c1c71636aef6bba01c8ce27962648696b"
     },
     {
       "path": "package.json",
       "bytes": 1248,
-      "sha256": "53f900f39ec4fb5033a02ef8f63c8865b1d2625baa4c945b86a6ab6a57c2b4f8"
+      "sha256": "128396bcf28b2cfb14f77f996841875644835fda13fe406f373ec1d2bc4ab8f1"
     },
     {
       "path": "scripts/provenance.mjs",
-      "bytes": 4555,
-      "sha256": "6c8c210b25a756bc74ed219b2b89c507e78c0ce49acaeb9046b4da1da77918db"
+      "bytes": 4596,
+      "sha256": "29df97164393c1ca06c3853055bc5064fcf866fcdaf67f5fb3a25e7b59671cfd"
     },
     {
       "path": "scripts/test-summary.mjs",
