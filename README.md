@@ -6,7 +6,7 @@
 
 在浏览器整理研习笔记，保留版本并导出自己的记录。
 
-**[打开个人记录样例 →](https://chumaniac.github.io/ordarc-experience-shell/)** · [进入 Ordarc 命盘与研习工作台](https://chumanic.com/)
+**[打开个人记录样例 →](https://chumaniac.github.io/ordarc-experience-shell/)** · [当前浏览器包](https://github.com/Chumaniac/ordarc-experience-shell/releases/tag/showcase-2026.11.16-2) · [进入 Ordarc 命盘与研习工作台](https://chumanic.com/)
 
 进入后，从「阅读记录示例」开始，编辑并保存一份笔记，再查看旧版本或导出 JSON。这个免登录样例只整理文字；命盘、问事与完整研习功能见正式工作台。
 
