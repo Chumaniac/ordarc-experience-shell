@@ -16,8 +16,18 @@ type Note = {
 const key = "ordarc.notes.v1";
 // One note may contain 11 × 20,000 UTF-16 units, plus its summary and JSON escapes.
 const maxImportBytes = 2 * 1024 * 1024;
+// randomUUID exists only in secure contexts. An unpacked copy served from a LAN address
+// still has getRandomValues, so a note can always be created.
+function newId(): string {
+  if (typeof crypto.randomUUID === "function") return crypto.randomUUID();
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
 const blank = (): Note => ({
-  id: crypto.randomUUID(),
+  id: newId(),
   title: "",
   kind: "研习",
   notes: "",
@@ -232,7 +242,7 @@ function Demo() {
         throw Error("记录文件格式不正确。");
       if (canLeave()) {
         const n: Note = d.note;
-        setDraft({id: crypto.randomUUID(), title: n.title, kind: n.kind, notes: n.notes,
+        setDraft({id: newId(), title: n.title, kind: n.kind, notes: n.notes,
           at: new Date(n.at).toISOString(), versions: n.versions.map(v => ({notes:v.notes, at:new Date(v.at).toISOString()}))});
         setDirty(true);
         setMessage("已载入导入草稿，检查后保存。");
